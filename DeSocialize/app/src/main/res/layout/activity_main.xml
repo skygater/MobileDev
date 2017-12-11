@@ -19,7 +19,7 @@
             android:id="@+id/animated_svg_view"
             android:layout_width="300dp"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:layout_gravity="center"
             android:layout_marginBottom="25dp"
             app:animatedSvgFillColors="@array/de_glyph_colors"
@@ -31,42 +31,131 @@
             app:animatedSvgTraceMarkerLength="50"
             app:animatedSvgTraceTime="2000"
             app:animatedSvgTraceTimePerGlyph="1000"/>
-
+            <!--Login -->
             <LinearLayout
                 android:id="@+id/layoutlogin"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:orientation="vertical"
                 android:gravity="center|top"
                 android:visibility="gone"
                 >
                 <EditText
+                    android:id="@+id/login_username"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:hint="Username"
+                    android:hint="Username or Email"
                     android:gravity="center"
                     android:inputType="text"
-
+                    android:theme="@style/login"
+                    android:textColor="#FFF"
+                    android:textColorHint="#a7a7a7"
                     />
                 <EditText
+                    android:id="@+id/login_pass"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:hint="Password"
                     android:gravity="center"
                     android:inputType="textPassword"
+                    android:theme="@style/login"
+                    android:textColor="#FFF"
+                    android:textColorHint="#a7a7a7"
+
                     />
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Login"
                     android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/de_green"
+                    android:textColor="#FFF"
+
+                    />
+            </LinearLayout>
+
+            <!-- Add info for registration -->
+            <LinearLayout
+                android:id="@+id/layoutaddinfo"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:orientation="vertical"
+                android:gravity="center|top"
+                android:visibility="gone"
+                >
+                <EditText
+                    android:id="@+id/add_username"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Add Username"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:theme="@style/login"
+                    android:textColor="#FFF"
+                    android:textColorHint="#a7a7a7"
+
+                    />
+                <EditText
+                    android:id="@+id/add_email"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Add Email"
+                    android:gravity="center"
+                    android:inputType="textEmailAddress"
+                    android:theme="@style/login"
+                    android:textColor="#FFF"
+                    android:textColorHint="#a7a7a7"
+                    />
+                <EditText
+                    android:id="@+id/add_pass1"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Add password"
+                    android:gravity="center"
+                    android:inputType="textPassword"
+                    android:theme="@style/login"
+                    android:textColor="#FFF"
+                    android:textColorHint="#a7a7a7"
 
                     />
 
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Join"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="#f1c40f"
+                    android:textColor="#FFF"
+                    android:onClick="addUser"
 
-
+                    />
             </LinearLayout>
+
+
+        <!--Registration !-->
+        <LinearLayout
+            android:id="@+id/layoutregister"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center|top"
+            android:visibility="gone"
+            >
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Join the party!"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#f1c40f"
+                android:textColor="#FFF"
+                android:onClick="register"
+
+                />
+        </LinearLayout>
+
     </LinearLayout>
 
 
