@@ -32,15 +32,13 @@
             android:id="@+id/singlePlayerBT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/singlePlayer"
-            android:onClick="singlePlayer()"/>
+            android:text="@string/singlePlayer"/>
 
         <Button
             android:id="@+id/multiPlayerBT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/multiPlayer"
-            android:onClick="multiplayer()"/>
+            android:text="@string/multiPlayer"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
