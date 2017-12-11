@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
      *      - Starts corresponding activity
      */
     private void multiplayer(){
-
+        Intent intent = new Intent(this, MultiplayerActivity.class);
+        startActivity(intent);
     }
 }
