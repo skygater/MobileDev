@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Initialization
         svgView = (AnimatedSvgView) findViewById(R.id.animated_svg_view);
         lh1 = (LinearLayout) findViewById(R.id.layouth1);
         layoutlogin  = (LinearLayout) findViewById(R.id.layoutlogin);
@@ -58,17 +59,13 @@ public class MainActivity extends AppCompatActivity {
         login_username = (EditText) findViewById(R.id.login_username);
         login_pass = (EditText) findViewById(R.id.login_pass);
 
-
         //Local Data Base Check
         mLocalDb = new DatabaseHelper(this);
-        //Check DB
-
         File database  = getApplicationContext().getDatabasePath(DatabaseHelper.DBNAME);
         if (false == database.exists()){
 
             mLocalDb.getReadableDatabase();
             //Copy DB
-
             if (copyDataBase(this)){
                 Toast.makeText(this,"Copy database scusses",Toast.LENGTH_SHORT ).show();
 
@@ -94,14 +91,12 @@ public class MainActivity extends AppCompatActivity {
                        Intent next  = new Intent(MainActivity.this,Main2Activity.class);
                        startActivity(next);
                    }
-
                }else
                 if (state == AnimatedSvgView.STATE_FINISHED) {
                     lh1.setGravity(0);
                     lh1.setPadding(0,50,0,0);
                     layoutlogin.setVisibility(View.VISIBLE);
                     layoutregister.setVisibility(View.VISIBLE);
-
                 }
             }
         });
@@ -110,18 +105,56 @@ public class MainActivity extends AppCompatActivity {
 
 
     // Methods onClick;
+    /* Login User */
+    public void login (View view){
+        if (isNetworkAvailable()){
+            Toast.makeText(this, "Yes there is network", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "Please connect to internet!", Toast.LENGTH_SHORT).show();
+        }
+    }
 
+    /* User go to registration */
     public void register(View view){
-        layoutadd = (LinearLayout) findViewById(R.id.layoutaddinfo);
-        layoutlogin.setVisibility(View.GONE);
-        layoutregister.setVisibility(View.GONE);
-        layoutadd.setVisibility(View.VISIBLE);
+        if (isNetworkAvailable()){
+            layoutadd = (LinearLayout) findViewById(R.id.layoutaddinfo);
+            layoutlogin.setVisibility(View.GONE);
+            layoutregister.setVisibility(View.GONE);
+            layoutadd.setVisibility(View.VISIBLE);
+        }else{
+            Toast.makeText(this, "Please connect to internet!", Toast.LENGTH_SHORT).show();
+        }
+
 
     }
+    /* User register info */
     public void addUser (View view){
+        //add values to username, email, pass1;
         add_usernam = (EditText) findViewById(R.id.add_username);
         add_email = (EditText) findViewById(R.id.add_email);
         add_pass1 = (EditText) findViewById(R.id.add_pass1);
+        //Preforming ceheck
+        int checkreg = registrationCheck();
+        if(checkreg == 0){
+            //Correct!
+            layoutadd.setVisibility(View.GONE);
+            login_username.setText(add_usernam.getText().toString());
+            login_pass.setText(add_pass1.getText().toString());
+            layoutlogin.setVisibility(View.VISIBLE);
+            Toast.makeText(this, "Just login !", Toast.LENGTH_SHORT).show();
+        }else{
+            //Not Correct
+            Toast.makeText(this, "Need to add info!", Toast.LENGTH_SHORT).show();
+        }
+       
+    }
+
+    
+
+    // CHECKS
+
+    /* Registration check */
+    public int registrationCheck (){
         int passNo = 0;
         if (add_usernam.getText().toString() == null || add_usernam.getText().toString().equals("")) {
             add_usernam.setText("");
@@ -129,9 +162,9 @@ public class MainActivity extends AppCompatActivity {
             passNo =1;
         }
         if (add_email.getText().toString() == null || add_email.getText().toString().equals("") ){
-                add_email.setText("");
-                add_email.setHintTextColor(0xFFe74c3c);
-                passNo =1;
+            add_email.setText("");
+            add_email.setHintTextColor(0xFFe74c3c);
+            passNo =1;
         }
         if (!checkEmail(add_email.getText().toString())){
             add_email.setText("");
@@ -145,25 +178,21 @@ public class MainActivity extends AppCompatActivity {
             add_pass1.setHintTextColor(0xFFe74c3c);
             passNo =1;
         }
-        if(passNo == 0){
-            layoutadd.setVisibility(View.GONE);
-            login_username.setText(add_usernam.getText().toString());
-            login_pass.setText(add_pass1.getText().toString());
-            layoutlogin.setVisibility(View.VISIBLE);
-            Toast.makeText(this, "Just login !", Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(this, "Need to add info!", Toast.LENGTH_SHORT).show();
-        }
+        return passNo;
 
-       
+
+    }
+
+    /* Check The NETWORK  */
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
     }
 
 
-
-
-
-
-    // Checks
+    /* Registration email input check */
     public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
             "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
                     "\\@" +
@@ -177,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean checkEmail(String email) {
         return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
     }
+    /*First Local DB copy ! */
     private boolean copyDataBase (Context context){
 
         try {
@@ -200,10 +230,5 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     }
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
-    }
+
 }
