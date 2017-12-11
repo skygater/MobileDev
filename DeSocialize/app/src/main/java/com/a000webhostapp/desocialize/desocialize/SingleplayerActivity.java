@@ -13,7 +13,7 @@ import android.widget.Toast;
 import java.util.Calendar;
 
 public class SingleplayerActivity extends AppCompatActivity {
-    final int DEF_DURATION = 1
+    final int DEF_DURATION = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
