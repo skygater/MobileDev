@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout layoutlogin;
     LinearLayout layoutregister;
     LinearLayout layoutadd;
+
+
     //Registration add info
     EditText add_usernam,add_email,add_pass1;
     EditText login_username, login_pass;
@@ -109,6 +111,13 @@ public class MainActivity extends AppCompatActivity {
     public void login (View view){
         if (isNetworkAvailable()){
             Toast.makeText(this, "Yes there is network", Toast.LENGTH_SHORT).show();
+            login_username = (EditText) findViewById(R.id.login_username);
+            login_pass = (EditText) findViewById(R.id.login_pass);
+
+
+
+
+
         }else{
             Toast.makeText(this, "Please connect to internet!", Toast.LENGTH_SHORT).show();
         }
@@ -124,9 +133,8 @@ public class MainActivity extends AppCompatActivity {
         }else{
             Toast.makeText(this, "Please connect to internet!", Toast.LENGTH_SHORT).show();
         }
-
-
     }
+
     /* User register info */
     public void addUser (View view){
         //add values to username, email, pass1;
@@ -135,13 +143,18 @@ public class MainActivity extends AppCompatActivity {
         add_pass1 = (EditText) findViewById(R.id.add_pass1);
         //Preforming ceheck
         int checkreg = registrationCheck();
+
         if(checkreg == 0){
             //Correct!
-            layoutadd.setVisibility(View.GONE);
-            login_username.setText(add_usernam.getText().toString());
-            login_pass.setText(add_pass1.getText().toString());
-            layoutlogin.setVisibility(View.VISIBLE);
-            Toast.makeText(this, "Just login !", Toast.LENGTH_SHORT).show();
+            if (isNetworkAvailable()) {
+                layoutadd.setVisibility(View.GONE);
+                login_username.setText(add_usernam.getText().toString());
+                login_pass.setText(add_pass1.getText().toString());
+                layoutlogin.setVisibility(View.VISIBLE);
+                Toast.makeText(this, "Just login !", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(this, "Please connect to internet!", Toast.LENGTH_SHORT).show();
+            }
         }else{
             //Not Correct
             Toast.makeText(this, "Need to add info!", Toast.LENGTH_SHORT).show();
@@ -190,7 +203,6 @@ public class MainActivity extends AppCompatActivity {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
     }
-
 
     /* Registration email input check */
     public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
