@@ -1,73 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     tools:context="com.a000webhostapp.desocialize.desocialize.MainActivity">
 
-    <LinearLayout
-        android:id="@+id/layouth1"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:orientation="vertical"
-        android:gravity="center"
-        >
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <com.jaredrummler.android.widget.AnimatedSvgView
-            android:id="@+id/animated_svg_view"
-            android:layout_width="300dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:layout_marginBottom="25dp"
-            app:animatedSvgFillColors="@array/de_glyph_colors"
-            app:animatedSvgFillStart="1200"
-            app:animatedSvgFillTime="1000"
-            app:animatedSvgGlyphStrings="@array/de_glyph_strings"
-            app:animatedSvgImageSizeX="620"
-            app:animatedSvgImageSizeY="400"
-            app:animatedSvgTraceMarkerLength="50"
-            app:animatedSvgTraceTime="2000"
-            app:animatedSvgTraceTimePerGlyph="1000"/>
+        <Button
+            android:id="@+id/singlePlayerBT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/singlePlayer"/>
 
-            <LinearLayout
-                android:id="@+id/layoutlogin"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center|top"
-                android:visibility="gone"
-                >
-                <EditText
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:hint="Username"
-                    android:gravity="center"
-                    android:inputType="text"
-
-                    />
-                <EditText
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:hint="Password"
-                    android:gravity="center"
-                    android:inputType="textPassword"
-                    />
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Login"
-                    android:layout_marginTop="10dp"
-
-                    />
-
-
-
-            </LinearLayout>
+        <Button
+            android:id="@+id/multiPlayerBT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/multiPlayer"/>
     </LinearLayout>
 
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
