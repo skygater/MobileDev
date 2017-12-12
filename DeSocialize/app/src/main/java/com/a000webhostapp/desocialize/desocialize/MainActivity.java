@@ -1,51 +1,78 @@
 package com.a000webhostapp.desocialize.desocialize;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.a000webhostapp.desocialize.desocialize.java.User;
 import com.a000webhostapp.desocialize.desocialize.localdb.DatabaseHelper;
 import com.jaredrummler.android.widget.AnimatedSvgView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
     //For Login UsernameAndPass
     String username, pass;
+    List<User> users;
 
     //Locla DataBase
     private  DatabaseHelper mLocalDb;
     //animation var
     AnimatedSvgView svgView;
     int index = -1;
+    Animation shake;
     //Layout var
     LinearLayout lh1 ;
     LinearLayout layoutlogin;
     LinearLayout layoutregister;
     LinearLayout layoutadd;
 
-
     //Registration add info
     EditText add_usernam,add_email,add_pass1;
     EditText login_username, login_pass;
+    Button btnreg;
+    //JSON users
+    String JSON_String = "";
+    String JSON_data;
+    JSONObject jsonObject;
+    JSONArray jsonArray;
+
 
 
     @Override
@@ -55,11 +82,18 @@ public class MainActivity extends AppCompatActivity {
 
         //Initialization
         svgView = (AnimatedSvgView) findViewById(R.id.animated_svg_view);
+        shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+
         lh1 = (LinearLayout) findViewById(R.id.layouth1);
         layoutlogin  = (LinearLayout) findViewById(R.id.layoutlogin);
         layoutregister = (LinearLayout) findViewById(R.id.layoutregister);
         login_username = (EditText) findViewById(R.id.login_username);
         login_pass = (EditText) findViewById(R.id.login_pass);
+        btnreg = (Button) findViewById(R.id.btnreg);
+        users = new ArrayList<>();
+
+        // Get JSON
+        new BackgroundTask().execute();
 
         //Local Data Base Check
         mLocalDb = new DatabaseHelper(this);
@@ -87,18 +121,20 @@ public class MainActivity extends AppCompatActivity {
         svgView.setOnStateChangeListener(new AnimatedSvgView.OnStateChangeListener() {
 
             @Override public void onStateChange(@AnimatedSvgView.State int state) {
-                // Check LOCAL DB!
+                /* Check LOCAL DB!
                if (state == AnimatedSvgView.STATE_TRACE_STARTED){
-                   if (mLocalDb.isRegistrated()){
-                       Intent next  = new Intent(MainActivity.this,Main2Activity.class);
-                       startActivity(next);
-                   }
-               }else
+
+               }else*/
                 if (state == AnimatedSvgView.STATE_FINISHED) {
-                    lh1.setGravity(0);
-                    lh1.setPadding(0,50,0,0);
-                    layoutlogin.setVisibility(View.VISIBLE);
-                    layoutregister.setVisibility(View.VISIBLE);
+                    if (mLocalDb.isRegistrated()){
+                        Intent next  = new Intent(MainActivity.this,Main2Activity.class);
+                        startActivity(next);
+                    }else {
+                        lh1.setGravity(0);
+                        lh1.setPadding(0, 50, 0, 0);
+                        layoutlogin.setVisibility(View.VISIBLE);
+                        layoutregister.setVisibility(View.VISIBLE);
+                    }
                 }
             }
         });
@@ -109,14 +145,54 @@ public class MainActivity extends AppCompatActivity {
     // Methods onClick;
     /* Login User */
     public void login (View view){
+        //HIDE KEYBORD ON LOGIN
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
+        int passCheck = 0;
+
         if (isNetworkAvailable()){
-            Toast.makeText(this, "Yes there is network", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Yes there is network", Toast.LENGTH_SHORT).show();
             login_username = (EditText) findViewById(R.id.login_username);
             login_pass = (EditText) findViewById(R.id.login_pass);
-
-
-
-
+           // Check Insert;
+            if (login_username.getText().toString() == null || login_username.getText().toString().equals("")){
+                login_username.setText("");
+                login_username.setHintTextColor(0xFFe74c3c);
+                passCheck = 1;
+            }
+            if (login_pass.getText().toString() == null || login_pass.getText().toString().equals("")){
+                login_pass.setText("");
+                login_pass.setHintTextColor(0xFFe74c3c);
+            }
+            // Check Insert PASS OR FAIL
+            if (passCheck==0){
+                // Check users PASS AND USERNAME/EMAIL
+                for (User u : users) {
+                    if (login_username.getText().toString().equalsIgnoreCase(u.getUsername()) || login_username.getText().toString().equalsIgnoreCase(u.getEmail())){
+                        if (login_pass.getText().toString().equals(u.getPassword())){
+                            //Adding to local DB;
+                            mLocalDb.insertPlayer(mLocalDb,u.getUsername(),u.getEmail(),u.getIdu(),u.getPassword());
+                            Intent homePage = new Intent(this, Main2Activity.class);
+                            startActivity(homePage);
+                        }else{
+                            login_pass.setText("");
+                            login_pass.setHint("Password");
+                            login_pass.setHintTextColor(0xFFe74c3c);
+                        }
+                    }else{
+                        login_pass.setText("");
+                        login_pass.setHintTextColor(0xFFe74c3c);
+                        login_username.setText("");
+                        login_username.setHint("Username or Email");
+                        login_username.setHintTextColor(0xFFe74c3c);
+                        btnreg.startAnimation(shake);
+                    }
+                }
+                // FAIL
+            }else{
+                Toast.makeText(this, "Plese enter Username/Email and Password", Toast.LENGTH_SHORT).show();
+            }
 
         }else{
             Toast.makeText(this, "Please connect to internet!", Toast.LENGTH_SHORT).show();
@@ -134,6 +210,15 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Please connect to internet!", Toast.LENGTH_SHORT).show();
         }
     }
+    public void backLogin(View view){
+
+            layoutadd = (LinearLayout) findViewById(R.id.layoutaddinfo);
+            layoutlogin.setVisibility(View.VISIBLE);
+            layoutregister.setVisibility(View.VISIBLE);
+            layoutadd.setVisibility(View.GONE);
+
+    }
+
 
     /* User register info */
     public void addUser (View view){
@@ -243,4 +328,75 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+class  BackgroundTask extends AsyncTask<Void,Void,String>{
+
+        String json_url ="";
+
+    @Override
+    protected String doInBackground(Void ... voids) {
+        /* Background Task for geting a JSON file */
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            URL url = new URL(json_url);
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            InputStream inputStream = httpURLConnection.getInputStream();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+
+            while ((JSON_String = bufferedReader.readLine()) != null){
+                stringBuilder.append(JSON_String);
+            }
+            bufferedReader.close();
+            inputStream.close();
+            httpURLConnection.disconnect();
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return stringBuilder.toString().trim();
+
+    }
+
+    @Override
+    protected void onPreExecute() {
+        /* Where do we get JSON*/
+
+        json_url = "https://desocialize.000webhostapp.com/users_de.php";
+
+    }
+
+    @Override
+    protected void onProgressUpdate(Void... values) {
+        super.onProgressUpdate(values);
+    }
+
+    @Override
+    protected void onPostExecute(String result) {
+        /* Geting a JSON String and extracting the info in side the LIST */
+        JSON_String = result;
+        User u = null;
+        try {
+            jsonObject = new JSONObject(JSON_String);
+            jsonArray = jsonObject.getJSONArray("server_responce");
+            int count = 0;
+            String username, email , password;
+            int idu;
+            while(count < jsonArray.length()){
+                JSONObject jo = jsonArray.getJSONObject(count);
+                idu = jo.getInt("id");
+                username = jo.getString("username");
+                email = jo.getString("email");
+                password = jo.getString("pass");
+                u = new User(idu,username,email,password);
+                users.add(u);
+                count ++;
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        //Toast.makeText(MainActivity.this, JSON_String, Toast.LENGTH_SHORT).show();
+    }
+}
 }

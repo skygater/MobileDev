@@ -130,8 +130,21 @@
                     android:backgroundTint="#f1c40f"
                     android:textColor="#FFF"
                     android:onClick="addUser"
-
                     />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Log in"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/de_green"
+                    android:textColor="#FFF"
+                    android:onClick="backLogin"
+                    />
+                </LinearLayout>
             </LinearLayout>
 
 
@@ -146,6 +159,7 @@
             android:visibility="gone"
             >
             <Button
+                android:id="@+id/btnreg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Join the party!"

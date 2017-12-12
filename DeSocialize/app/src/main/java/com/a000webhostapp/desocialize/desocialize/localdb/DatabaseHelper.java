@@ -1,9 +1,11 @@
 package com.a000webhostapp.desocialize.desocialize.localdb;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 /**
  * Created by djordjekalezic on 11/12/2017.
@@ -48,6 +50,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
         return false;
+    }
+
+    public boolean insertPlayer (DatabaseHelper db, String username, String email, int idu, String password){
+
+        mDatabase = db.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("idu",idu);
+        contentValues.put("email",email);
+        contentValues.put("username", username);
+        contentValues.put("pass", password);
+
+        openDatabase();
+        mDatabase.insert("player",null,contentValues);
+        closeDatabase();
+        Toast.makeText(mContext, "Inserted in DB", Toast.LENGTH_SHORT).show();
+        return true;
     }
 
 
