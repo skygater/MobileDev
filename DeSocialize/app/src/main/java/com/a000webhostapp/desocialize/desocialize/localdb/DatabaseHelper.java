@@ -64,7 +64,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         openDatabase();
         mDatabase.insert("player",null,contentValues);
         closeDatabase();
-        Toast.makeText(mContext, "Inserted in DB", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(mContext, "Inserted in DB "+idu, Toast.LENGTH_SHORT).show();
         return true;
     }
 

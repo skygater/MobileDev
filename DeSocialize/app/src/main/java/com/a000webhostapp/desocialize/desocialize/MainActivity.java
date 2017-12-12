@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -20,6 +21,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.a000webhostapp.desocialize.desocialize.java.User;
@@ -62,11 +64,16 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout layoutlogin;
     LinearLayout layoutregister;
     LinearLayout layoutadd;
+    LinearLayout log_reg;
 
     //Registration add info
     EditText add_usernam,add_email,add_pass1;
     EditText login_username, login_pass;
     Button btnreg;
+    Button btn_login;
+    ProgressBar mProgressBar;
+    ProgressBar mProgressBar1;
+
     //JSON users
     String JSON_String = "";
     String JSON_data;
@@ -84,12 +91,17 @@ public class MainActivity extends AppCompatActivity {
         svgView = (AnimatedSvgView) findViewById(R.id.animated_svg_view);
         shake = AnimationUtils.loadAnimation(this, R.anim.shake);
 
+        mProgressBar=(ProgressBar)findViewById(R.id.progressBar1);
         lh1 = (LinearLayout) findViewById(R.id.layouth1);
         layoutlogin  = (LinearLayout) findViewById(R.id.layoutlogin);
         layoutregister = (LinearLayout) findViewById(R.id.layoutregister);
         login_username = (EditText) findViewById(R.id.login_username);
         login_pass = (EditText) findViewById(R.id.login_pass);
         btnreg = (Button) findViewById(R.id.btnreg);
+        log_reg = (LinearLayout) findViewById(R.id.log_reg);
+        mProgressBar1 = (ProgressBar) findViewById(R.id.progressBar2);
+        btn_login = (Button) findViewById(R.id.btn_login);
+
         users = new ArrayList<>();
 
         // Get JSON
@@ -145,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
     // Methods onClick;
     /* Login User */
     public void login (View view){
+
         //HIDE KEYBORD ON LOGIN
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
@@ -210,6 +223,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Please connect to internet!", Toast.LENGTH_SHORT).show();
         }
     }
+    /* User go back to login  */
     public void backLogin(View view){
 
             layoutadd = (LinearLayout) findViewById(R.id.layoutaddinfo);
@@ -223,20 +237,46 @@ public class MainActivity extends AppCompatActivity {
     /* User register info */
     public void addUser (View view){
         //add values to username, email, pass1;
+        final String username,email,pass;
         add_usernam = (EditText) findViewById(R.id.add_username);
+        username = add_usernam.getText().toString();
         add_email = (EditText) findViewById(R.id.add_email);
+        email = add_email.getText().toString();
         add_pass1 = (EditText) findViewById(R.id.add_pass1);
+        pass = add_pass1.getText().toString();
+
         //Preforming ceheck
         int checkreg = registrationCheck();
 
         if(checkreg == 0){
             //Correct!
             if (isNetworkAvailable()) {
-                layoutadd.setVisibility(View.GONE);
-                login_username.setText(add_usernam.getText().toString());
-                login_pass.setText(add_pass1.getText().toString());
-                layoutlogin.setVisibility(View.VISIBLE);
-                Toast.makeText(this, "Just login !", Toast.LENGTH_SHORT).show();
+                RegisterTask registerTask = new RegisterTask(this,mProgressBar);
+                registerTask.execute(username,email,pass);
+                CountDownTimer mCountDownTimer;
+                final int[] i = {0};
+                mProgressBar.setProgress(i[0]);
+                mProgressBar.setVisibility(View.VISIBLE);
+                mCountDownTimer=new CountDownTimer(6000,5000) {
+
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        Log.v("Log_tag", "Tick of Progress"+ i[0] + millisUntilFinished);
+                        i[0]++;
+                        mProgressBar.setProgress(i[0]);
+                    }
+                    @Override
+                    public void onFinish() {
+                        mProgressBar.setVisibility(View.GONE);
+                        mLocalDb.insertPlayer(mLocalDb,username,email,1,pass);
+                        Intent homePage = new Intent(MainActivity.this, Main2Activity.class);
+                        startActivity(homePage);
+                    }
+                };
+                mCountDownTimer.start();
+
+
+
             }else{
                 Toast.makeText(this, "Please connect to internet!", Toast.LENGTH_SHORT).show();
             }
@@ -247,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
        
     }
 
-    
+
 
     // CHECKS
 
@@ -275,6 +315,14 @@ public class MainActivity extends AppCompatActivity {
             add_pass1.setText("");
             add_pass1.setHintTextColor(0xFFe74c3c);
             passNo =1;
+        }
+        for (User u : users) {
+            if (add_email.getText().toString().equalsIgnoreCase(u.getEmail())){
+                add_email.setText("");
+                add_email.setHint("Email is registered ");
+                add_email.setHintTextColor(0xFFe74c3c);
+                passNo =1;
+            }
         }
         return passNo;
 
@@ -328,7 +376,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-class  BackgroundTask extends AsyncTask<Void,Void,String>{
+    class  BackgroundTask extends AsyncTask<Void,Void,String>{
 
         String json_url ="";
 
@@ -396,7 +444,8 @@ class  BackgroundTask extends AsyncTask<Void,Void,String>{
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        //Toast.makeText(MainActivity.this, JSON_String, Toast.LENGTH_SHORT).show();
+
+       //Toast.makeText(MainActivity.this, JSON_String, Toast.LENGTH_SHORT).show();
     }
 }
 }
