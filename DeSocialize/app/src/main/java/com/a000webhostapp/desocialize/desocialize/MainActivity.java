@@ -3,16 +3,12 @@ package com.a000webhostapp.desocialize.desocialize;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.InputType;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -24,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.a000webhostapp.desocialize.desocialize.Task.RegisterTask;
 import com.a000webhostapp.desocialize.desocialize.java.User;
 import com.a000webhostapp.desocialize.desocialize.localdb.DatabaseHelper;
 import com.jaredrummler.android.widget.AnimatedSvgView;
@@ -43,7 +40,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -139,8 +135,9 @@ public class MainActivity extends AppCompatActivity {
                }else*/
                 if (state == AnimatedSvgView.STATE_FINISHED) {
                     if (mLocalDb.isRegistrated()){
-                        Intent next  = new Intent(MainActivity.this,Main2Activity.class);
+                        Intent next  = new Intent(MainActivity.this,QrScanActivity.class);
                         startActivity(next);
+                        finish();
                     }else {
                         lh1.setGravity(0);
                         lh1.setPadding(0, 50, 0, 0);
@@ -155,6 +152,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     // Methods onClick;
+
+
+
     /* Login User */
     public void login (View view){
 
@@ -177,17 +177,24 @@ public class MainActivity extends AppCompatActivity {
             if (login_pass.getText().toString() == null || login_pass.getText().toString().equals("")){
                 login_pass.setText("");
                 login_pass.setHintTextColor(0xFFe74c3c);
+                passCheck = 1;
+
             }
             // Check Insert PASS OR FAIL
             if (passCheck==0){
+                String username = login_username.getText().toString();
+                String pass = login_pass.getText().toString();
                 // Check users PASS AND USERNAME/EMAIL
                 for (User u : users) {
-                    if (login_username.getText().toString().equalsIgnoreCase(u.getUsername()) || login_username.getText().toString().equalsIgnoreCase(u.getEmail())){
-                        if (login_pass.getText().toString().equals(u.getPassword())){
+
+                    if (username.equals(u.getUsername()) || username.equals(u.getEmail())){
+                        if (pass.equals(u.getPassword())){
                             //Adding to local DB;
                             mLocalDb.insertPlayer(mLocalDb,u.getUsername(),u.getEmail(),u.getIdu(),u.getPassword());
-                            Intent homePage = new Intent(this, Main2Activity.class);
+                            Intent homePage = new Intent(this, QrScanActivity.class);
                             startActivity(homePage);
+                            finish();
+                            break;
                         }else{
                             login_pass.setText("");
                             login_pass.setHint("Password");
@@ -269,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onFinish() {
                         mProgressBar.setVisibility(View.GONE);
                         mLocalDb.insertPlayer(mLocalDb,username,email,1,pass);
-                        Intent homePage = new Intent(MainActivity.this, Main2Activity.class);
+                        Intent homePage = new Intent(MainActivity.this, QrScanActivity.class);
                         startActivity(homePage);
                     }
                 };

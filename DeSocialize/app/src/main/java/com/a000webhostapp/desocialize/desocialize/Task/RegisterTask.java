@@ -1,4 +1,4 @@
-package com.a000webhostapp.desocialize.desocialize;
+package com.a000webhostapp.desocialize.desocialize.Task;
 
 import android.content.Context;
 import android.os.AsyncTask;
