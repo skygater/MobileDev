@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+import com.a000webhostapp.desocialize.desocialize.java.User;
+
 /**
  * Created by djordjekalezic on 11/12/2017.
  */
@@ -52,7 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return false;
     }
 
-    public boolean insertPlayer (DatabaseHelper db, String username, String email, int idu, String password){
+    public boolean insertPlayer (DatabaseHelper db, String username, String email, int idu, String password,String qr,String imgp){
 
         mDatabase = db.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -60,12 +62,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("email",email);
         contentValues.put("username", username);
         contentValues.put("pass", password);
+        contentValues.put("qr", qr);
+        contentValues.put("imgp",imgp);
 
         openDatabase();
         mDatabase.insert("player",null,contentValues);
         closeDatabase();
         //Toast.makeText(mContext, "Inserted in DB "+idu, Toast.LENGTH_SHORT).show();
         return true;
+    }
+
+    public User player (){
+         User u  = null;
+        openDatabase();
+        Cursor cursor = mDatabase.rawQuery("select idu, email,username, pass, qr,imgp from player", null);
+        cursor.moveToFirst();
+        u = new User(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5));
+        cursor.close();
+        closeDatabase();
+        return  u;
     }
 
 

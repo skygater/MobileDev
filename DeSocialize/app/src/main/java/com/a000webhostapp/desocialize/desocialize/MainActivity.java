@@ -135,7 +135,8 @@ public class MainActivity extends AppCompatActivity {
                }else*/
                 if (state == AnimatedSvgView.STATE_FINISHED) {
                     if (mLocalDb.isRegistrated()){
-                        Intent next  = new Intent(MainActivity.this,QrScanActivity.class);
+                        Intent next  = new Intent(MainActivity.this,Main2Activity.class);
+                        next.putExtra("QR-ID","From LOGIN");
                         startActivity(next);
                         finish();
                     }else {
@@ -190,8 +191,9 @@ public class MainActivity extends AppCompatActivity {
                     if (username.equals(u.getUsername()) || username.equals(u.getEmail())){
                         if (pass.equals(u.getPassword())){
                             //Adding to local DB;
-                            mLocalDb.insertPlayer(mLocalDb,u.getUsername(),u.getEmail(),u.getIdu(),u.getPassword());
-                            Intent homePage = new Intent(this, QrScanActivity.class);
+                            mLocalDb.insertPlayer(mLocalDb,u.getUsername(),u.getEmail(),u.getIdu(),u.getPassword(), u.getQr(),u.getImgp());
+                            Intent homePage = new Intent(this, Main2Activity.class);
+                            homePage.putExtra("QR-ID","From LOGIN");
                             startActivity(homePage);
                             finish();
                             break;
@@ -260,6 +262,7 @@ public class MainActivity extends AppCompatActivity {
             if (isNetworkAvailable()) {
                 RegisterTask registerTask = new RegisterTask(this,mProgressBar);
                 registerTask.execute(username,email,pass);
+                new BackgroundTask().execute();
                 CountDownTimer mCountDownTimer;
                 final int[] i = {0};
                 mProgressBar.setProgress(i[0]);
@@ -274,10 +277,40 @@ public class MainActivity extends AppCompatActivity {
                     }
                     @Override
                     public void onFinish() {
-                        mProgressBar.setVisibility(View.GONE);
-                        mLocalDb.insertPlayer(mLocalDb,username,email,1,pass);
-                        Intent homePage = new Intent(MainActivity.this, QrScanActivity.class);
-                        startActivity(homePage);
+
+                        layoutadd = (LinearLayout) findViewById(R.id.layoutaddinfo);
+                        layoutlogin.setVisibility(View.VISIBLE);
+                        layoutregister.setVisibility(View.VISIBLE);
+                        layoutadd.setVisibility(View.GONE);
+
+                        String username = add_usernam.getText().toString();
+                        String pass = add_pass1.getText().toString();
+                        // Check users PASS AND USERNAME/EMAIL
+                        for (User u : users) {
+                            if (username.equals(u.getUsername()) || username.equals(u.getEmail())){
+                                if (pass.equals(u.getPassword())){
+                                    //Adding to local DB;
+                                    mLocalDb.insertPlayer(mLocalDb,u.getUsername(),u.getEmail(),u.getIdu(),u.getPassword(), u.getQr(),u.getImgp());
+                                    Intent homePage = new Intent(MainActivity.this, Main2Activity.class);
+                                    homePage.putExtra("QR-ID","From LOGIN");
+                                    startActivity(homePage);
+                                    finish();
+                                    break;
+                                }else{
+                                    login_pass.setText("");
+                                    login_pass.setHint("Password");
+                                    login_pass.setHintTextColor(0xFFe74c3c);
+                                }
+                            }else{
+                                login_pass.setText("");
+                                login_pass.setHintTextColor(0xFFe74c3c);
+                                login_username.setText("");
+                                login_username.setHint("Username or Email");
+                                login_username.setHintTextColor(0xFFe74c3c);
+                                btnreg.startAnimation(shake);
+                            }
+                        }
+
                     }
                 };
                 mCountDownTimer.start();
@@ -436,7 +469,7 @@ public class MainActivity extends AppCompatActivity {
             jsonObject = new JSONObject(JSON_String);
             jsonArray = jsonObject.getJSONArray("server_responce");
             int count = 0;
-            String username, email , password;
+            String username, email , password, qr, imgp;
             int idu;
             while(count < jsonArray.length()){
                 JSONObject jo = jsonArray.getJSONObject(count);
@@ -444,7 +477,9 @@ public class MainActivity extends AppCompatActivity {
                 username = jo.getString("username");
                 email = jo.getString("email");
                 password = jo.getString("pass");
-                u = new User(idu,username,email,password);
+                qr = jo.getString("qr");
+                imgp = jo.getString("imgp");
+                u = new User(idu,username,email,password,qr,imgp);
                 users.add(u);
                 count ++;
             }
@@ -452,7 +487,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-       //Toast.makeText(MainActivity.this, JSON_String, Toast.LENGTH_SHORT).show();
+      // Toast.makeText(MainActivity.this, JSON_String, Toast.LENGTH_SHORT).show();
     }
 }
 }

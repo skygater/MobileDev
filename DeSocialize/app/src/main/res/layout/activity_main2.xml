@@ -4,13 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context="com.a000webhostapp.desocialize.desocialize.Main2Activity">
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_check_circle_black_24dp"
+        android:id="@+id/qr_img_show"
+        />
     <TextView
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text= "HELLO BITCH"
+        android:layout_height="wrap_content"
+        android:text= "HELLO"
         android:textSize="30sp"
         android:id="@+id/testqrtext"
         />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="backQr"
+        android:text="QR Read"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="showQr"
+        android:text="Show QR"
+        />
+
 </LinearLayout>
