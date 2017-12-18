@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">DeSocialize</string>
+
+    <string name="singlePlayer">Single Player</string>
+    <string name="multiPlayer">Multi Player</string>
+    <string name="title_activity_single_player">SinglePlayerActivity</string>
+    <string name="settings">Settings</string>
 </resources>
