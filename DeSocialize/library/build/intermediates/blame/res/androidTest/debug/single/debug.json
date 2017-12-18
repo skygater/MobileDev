@@ -24,12 +24,12 @@
         "source": "/Users/djordjekalezic/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.2.aar/21a36c1da1c91466210cf78dfe5c1a82/res/drawable-xhdpi-v4/notify_panel_notification_icon_bg.png"
     },
     {
-        "merged": "/Users/djordjekalezic/Desktop/Mobile_App/MobileDev/DeSocialize/library/build/intermediates/res/merged/androidTest/debug/layout-v21_notification_action_tombstone.xml.flat",
-        "source": "/Users/djordjekalezic/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.2.aar/21a36c1da1c91466210cf78dfe5c1a82/res/layout-v21/notification_action_tombstone.xml"
-    },
-    {
         "merged": "/Users/djordjekalezic/Desktop/Mobile_App/MobileDev/DeSocialize/library/build/intermediates/res/merged/androidTest/debug/layout_notification_action.xml.flat",
         "source": "/Users/djordjekalezic/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.2.aar/21a36c1da1c91466210cf78dfe5c1a82/res/layout/notification_action.xml"
+    },
+    {
+        "merged": "/Users/djordjekalezic/Desktop/Mobile_App/MobileDev/DeSocialize/library/build/intermediates/res/merged/androidTest/debug/layout-v21_notification_action_tombstone.xml.flat",
+        "source": "/Users/djordjekalezic/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.2.aar/21a36c1da1c91466210cf78dfe5c1a82/res/layout-v21/notification_action_tombstone.xml"
     },
     {
         "merged": "/Users/djordjekalezic/Desktop/Mobile_App/MobileDev/DeSocialize/library/build/intermediates/res/merged/androidTest/debug/drawable_notification_bg_low.xml.flat",
