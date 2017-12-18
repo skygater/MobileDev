@@ -3,6 +3,8 @@
 
     <string name="singlePlayer">SinglePlayer</string>
     <string name="multiPlayer">MultiPlayer</string>
+    <string name="settings">Settings</string>
     <string name="title_activity_single_player">SinglePlayerActivity</string>
+    <string name="title_activity_button">button</string>
 
 </resources>
