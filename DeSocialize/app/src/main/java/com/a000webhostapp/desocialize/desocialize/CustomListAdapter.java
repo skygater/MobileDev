@@ -22,22 +22,19 @@ public class CustomListAdapter extends ArrayAdapter {
     //to reference the Activity
     private final Activity context;
 
-    //to store the images
-    private final Integer[] imageArray;
-
     private Context mContext;
 
     ArrayList<String> nameList = new ArrayList<String>();
     ArrayList<Integer> pointList = new ArrayList<Integer>();
+    ArrayList<Integer> idList = new ArrayList<Integer>();
 
 
-
-    public CustomListAdapter(Activity context, ArrayList<Integer> pointList, ArrayList<String> nameList, Integer[] imageArrayParam){
+    public CustomListAdapter(Activity context, ArrayList<Integer> pointList, ArrayList<String> nameList, ArrayList<Integer> idList){
 
         super(context,R.layout.list_row , nameList);
 
         this.context=context;
-        this.imageArray = imageArrayParam;
+        this.idList = idList;
         this.nameList = nameList;
         this.pointList = pointList;
         this.mContext = context;
@@ -55,14 +52,14 @@ public class CustomListAdapter extends ArrayAdapter {
         Button btn = rowView.findViewById(R.id.list_add_btn);
 
         //this code sets the values of the objects to values from the arrays
-        nametxt.setText(nameList.get(position));
-        pointtxt.setText(pointList.get(position) +"");
+        nametxt.setText(nameList.get(idList.get(position)));
+        pointtxt.setText(pointList.get(idList.get(position)) +"");
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(mContext instanceof MultiplayerActivity){
-                    ((MultiplayerActivity)mContext).adder_logic(position);
+                    ((MultiplayerActivity)mContext).adder_logic(idList.get(position));
                     nameList.remove(position);
                     pointList.remove(position);
                     notifyDataSetChanged();

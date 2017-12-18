@@ -27,6 +27,8 @@ public class MultiplayerActivity extends AppCompatActivity {
 
     ArrayList<String> nameList = new ArrayList<String>();
     ArrayList<Integer> pointList = new ArrayList<Integer>();
+    ArrayList<Integer> idList = new ArrayList<Integer>();
+
     Integer[] imageIDArray = new Integer[2];
     LayoutInflater inflater;
     CustomListAdapter whatever;
@@ -41,8 +43,10 @@ public class MultiplayerActivity extends AppCompatActivity {
         nameList.add("BouBo");
         pointList.add(2);
         pointList.add(3);
+        idList.add(0);
+        idList.add(1);
 
-        whatever = new CustomListAdapter(this, pointList, nameList, imageIDArray);
+        whatever = new CustomListAdapter(this, pointList, nameList, idList);
 
         inflater = this.getLayoutInflater();
         listview = findViewById(R.id.list);
@@ -57,6 +61,7 @@ public class MultiplayerActivity extends AppCompatActivity {
     }
     public void adder_logic (final Integer position)
     {
+
         rowView = inflater.inflate(R.layout.scroller_user, null ,true);
         scroll = findViewById(R.id.list_added);
 
@@ -73,8 +78,8 @@ public class MultiplayerActivity extends AppCompatActivity {
         remover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int position = 2;
-                position = (Integer) rowView.getTag();
+                //int position = 2;
+                //position = (Integer) rowView.getTag();
                 remover_logic(position);
             }
         });
