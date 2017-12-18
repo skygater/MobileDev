@@ -40,10 +40,10 @@
             ]
         },
         {
-            "outputFile": "/Users/djordjekalezic/Desktop/Mobile_App/MobileDev/DeSocialize/library/build/intermediates/res/merged/androidTest/debug/values-sq_values-sq.arsc.flat",
+            "outputFile": "/Users/djordjekalezic/Desktop/Mobile_App/MobileDev/DeSocialize/library/build/intermediates/res/merged/androidTest/debug/values-b+sr+Latn_values-b+sr+Latn.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/djordjekalezic/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.2.aar/21a36c1da1c91466210cf78dfe5c1a82/res/values-sq/values-sq.xml",
+                    "source": "/Users/djordjekalezic/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.2.aar/21a36c1da1c91466210cf78dfe5c1a82/res/values-b+sr+Latn/values-b+sr+Latn.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -55,10 +55,10 @@
             ]
         },
         {
-            "outputFile": "/Users/djordjekalezic/Desktop/Mobile_App/MobileDev/DeSocialize/library/build/intermediates/res/merged/androidTest/debug/values-b+sr+Latn_values-b+sr+Latn.arsc.flat",
+            "outputFile": "/Users/djordjekalezic/Desktop/Mobile_App/MobileDev/DeSocialize/library/build/intermediates/res/merged/androidTest/debug/values-sq_values-sq.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/djordjekalezic/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.2.aar/21a36c1da1c91466210cf78dfe5c1a82/res/values-b+sr+Latn/values-b+sr+Latn.xml",
+                    "source": "/Users/djordjekalezic/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.2.aar/21a36c1da1c91466210cf78dfe5c1a82/res/values-sq/values-sq.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -115,10 +115,10 @@
             ]
         },
         {
-            "outputFile": "/Users/djordjekalezic/Desktop/Mobile_App/MobileDev/DeSocialize/library/build/intermediates/res/merged/androidTest/debug/values-ko_values-ko.arsc.flat",
+            "outputFile": "/Users/djordjekalezic/Desktop/Mobile_App/MobileDev/DeSocialize/library/build/intermediates/res/merged/androidTest/debug/values-is_values-is.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/djordjekalezic/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.2.aar/21a36c1da1c91466210cf78dfe5c1a82/res/values-ko/values-ko.xml",
+                    "source": "/Users/djordjekalezic/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.2.aar/21a36c1da1c91466210cf78dfe5c1a82/res/values-is/values-is.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -130,10 +130,10 @@
             ]
         },
         {
-            "outputFile": "/Users/djordjekalezic/Desktop/Mobile_App/MobileDev/DeSocialize/library/build/intermediates/res/merged/androidTest/debug/values-is_values-is.arsc.flat",
+            "outputFile": "/Users/djordjekalezic/Desktop/Mobile_App/MobileDev/DeSocialize/library/build/intermediates/res/merged/androidTest/debug/values-ko_values-ko.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/djordjekalezic/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.2.aar/21a36c1da1c91466210cf78dfe5c1a82/res/values-is/values-is.xml",
+                    "source": "/Users/djordjekalezic/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.2.aar/21a36c1da1c91466210cf78dfe5c1a82/res/values-ko/values-ko.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
