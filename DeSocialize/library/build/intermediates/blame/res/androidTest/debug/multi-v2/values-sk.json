@@ -1,6 +1,21 @@
 {
     "logs": [
         {
+            "outputFile": "C:\\Users\\barbara.puljak\\Desktop\\MobileDev\\DeSocialize\\library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-sk\\values-sk.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\barbara.puljak\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.0.2.aar\\a82a95cbd3cd0e2548a003a47cdca1c6\\res\\values-sk\\values-sk.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "C:\\Users\\Dario\\Desktop\\mobdev\\MobileDev\\DeSocialize\\library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-sk\\values-sk.xml",
             "map": [
                 {

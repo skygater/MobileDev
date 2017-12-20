@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\djordjekalezic\\Desktop\\Mobile_App\\MobileDev\\DeSocialize\\library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-et\\values-et.xml",
+            "outputFile": "C:\\Users\\Dario\\Desktop\\mobdev\\MobileDev\\DeSocialize\\library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-et\\values-et.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\djordjekalezic\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.0.2.aar\\21a36c1da1c91466210cf78dfe5c1a82\\res\\values-et\\values-et.xml",
+                    "source": "C:\\Users\\Dario\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.0.2.aar\\97eded8c22177d5e7e0f3a62ade7b03a\\res\\values-et\\values-et.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -31,10 +31,25 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\Dario\\Desktop\\mobdev\\MobileDev\\DeSocialize\\library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-et\\values-et.xml",
+            "outputFile": "C:\\Users\\barbara.puljak\\Desktop\\MobileDev\\DeSocialize\\library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-et\\values-et.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Dario\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.0.2.aar\\97eded8c22177d5e7e0f3a62ade7b03a\\res\\values-et\\values-et.xml",
+                    "source": "C:\\Users\\barbara.puljak\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.0.2.aar\\a82a95cbd3cd0e2548a003a47cdca1c6\\res\\values-et\\values-et.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\djordjekalezic\\Desktop\\Mobile_App\\MobileDev\\DeSocialize\\library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-et\\values-et.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\djordjekalezic\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.0.2.aar\\21a36c1da1c91466210cf78dfe5c1a82\\res\\values-et\\values-et.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
