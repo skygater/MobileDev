@@ -1,25 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/djordjekalezic/Desktop/Mobile_App/MobileDev/DeSocialize/library/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-ar/values-ar.xml",
+            "outputFile": "D:\\Android projects\\Mobile Project\\MobileDev\\DeSocialize\\library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-ar\\values-ar.xml",
             "map": [
                 {
-                    "source": "/Users/djordjekalezic/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.2.aar/21a36c1da1c91466210cf78dfe5c1a82/res/values-ar/values-ar.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "/Users/djordjekalezic/Desktop/Mobile_App/MobileDev/DeSocialize/D:\\Android projects\\Mobile Project\\MobileDev\\DeSocialize\\library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-ar\\values-ar.xml",
-            "map": [
-                {
-                    "source": "/Users/djordjekalezic/Desktop/Mobile_App/MobileDev/DeSocialize/C:\\Users\\next4\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.0.2.aar\\2130a92e1b5d4dd8c1d3ebf914a995c2\\res\\values-ar\\values-ar.xml",
+                    "source": "C:\\Users\\next4\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.0.2.aar\\ed40cf2e22e09466efd1557d30da46e0\\res\\values-ar\\values-ar.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

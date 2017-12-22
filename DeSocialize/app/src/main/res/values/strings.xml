@@ -4,5 +4,11 @@
     <string name="singlePlayer">SinglePlayer</string>
     <string name="multiPlayer">MultiPlayer</string>
     <string name="title_activity_single_player">SinglePlayerActivity</string>
+    <string name="SPinfo">Can you not use the phone for several minutes? Find out!</string>
+    <string name="minutesLabel">Minutes:</string>
+    <string name="howToStart">Turn off screen to start</string>
+    <string name="youLost">You lost!</string>
+    <string name="youWin">You win!</string>
+    <string name="tryAgain">Try again?</string>
 
 </resources>

@@ -10,7 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-/*
+/**
  *  MENU SCREEN
  *      - display logo and navigation
  */
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /*
+    /**
      * Starts singleplayer mode
      *      - started when user clicks on SP button
      *      - Starts corresponding activity
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /*
+    /**
      * Starts multiplayer mode
      *      - started when user clicks on MP button
      *      - Starts corresponding activity
