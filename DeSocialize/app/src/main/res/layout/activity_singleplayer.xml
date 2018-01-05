@@ -62,9 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/minutesPicker" />
 
 
-    <include layout="@layout/loss_screen"
-        android:visibility="gone"/>
-    <include layout="@layout/win_screen"
+    <include layout="@layout/result_screen"
         android:visibility="gone"/>
 
 
