@@ -9,6 +9,6 @@
     <string name="howToStart">Turn off screen to start</string>
     <string name="youLost">You lost!</string>
     <string name="youWin">You win!</string>
-    <string name="tryAgain">Try again?</string>
+    <string name="tryAgain">Play again?</string>
 
 </resources>

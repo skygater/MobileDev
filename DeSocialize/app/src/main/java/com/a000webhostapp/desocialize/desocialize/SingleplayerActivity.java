@@ -23,9 +23,6 @@ import android.widget.Toast;
 import java.util.Calendar;
 
 public class SingleplayerActivity extends AppCompatActivity {
-    final int DEF_DURATION = 10;
-    final int MIN_DURATION = 1;
-    final int MAX_DURATION = 150;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +35,9 @@ public class SingleplayerActivity extends AppCompatActivity {
 
         // setup numberPicker
         NumberPicker numberPicker = findViewById(R.id.minutesPicker);
-        numberPicker.setMinValue(MIN_DURATION);
-        numberPicker.setMaxValue(MAX_DURATION);
-        numberPicker.setValue(DEF_DURATION);
+        numberPicker.setMinValue(R.integer.min_duration);
+        numberPicker.setMaxValue(R.integer.max_duration);
+        numberPicker.setValue(R.integer.def_duration);
 
 
         // setup win loss screen
