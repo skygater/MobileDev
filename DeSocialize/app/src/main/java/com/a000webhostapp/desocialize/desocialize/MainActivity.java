@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // LOGO ANIMATION0
+        // logo ANIMATION0
         svgView.postDelayed(new Runnable() {
             @Override public void run() {
                 svgView.start();
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                }else*/
                 if (state == AnimatedSvgView.STATE_FINISHED) {
                     if (mLocalDb.isRegistrated()){
-                        Intent next  = new Intent(MainActivity.this,Main2Activity.class);
+                        Intent next  = new Intent(MainActivity.this,MenuActivity.class);
                         next.putExtra("QR-ID","From LOGIN");
                         startActivity(next);
                         finish();
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        // LOGO ANIMATION0 END
+        // logo ANIMATION0 END
     }
 
 
@@ -192,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
                         if (pass.equals(u.getPassword())){
                             //Adding to local DB;
                             mLocalDb.insertPlayer(mLocalDb,u.getUsername(),u.getEmail(),u.getIdu(),u.getPassword(), u.getQr(),u.getImgp());
-                            Intent homePage = new Intent(this, Main2Activity.class);
+                            Intent homePage = new Intent(this, MenuActivity.class);
                             homePage.putExtra("QR-ID","From LOGIN");
                             startActivity(homePage);
                             finish();
@@ -291,7 +291,7 @@ public class MainActivity extends AppCompatActivity {
                                 if (pass.equals(u.getPassword())){
                                     //Adding to local DB;
                                     mLocalDb.insertPlayer(mLocalDb,u.getUsername(),u.getEmail(),u.getIdu(),u.getPassword(), u.getQr(),u.getImgp());
-                                    Intent homePage = new Intent(MainActivity.this, Main2Activity.class);
+                                    Intent homePage = new Intent(MainActivity.this, MenuActivity.class);
                                     homePage.putExtra("QR-ID","From LOGIN");
                                     startActivity(homePage);
                                     finish();

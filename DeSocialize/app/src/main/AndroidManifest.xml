@@ -26,7 +26,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".QrScanActivity" />
-        <activity android:name=".Main2Activity"></activity>
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".MenuActivity"></activity>
     </application>
 
 </manifest>
