@@ -43,6 +43,10 @@ public class MultiplayerActivity extends AppCompatActivity {
 
     GridView gridView;
 
+    Button nav_fwd;
+    Button nav_back;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +67,7 @@ public class MultiplayerActivity extends AppCompatActivity {
 
 
         whatever = new CustomListAdapter(this, pointList, nameList, imageIDArray);
-        //Neww Adapter;
+        //New Adapter;
         adapterBase = new AdapterBase(this,nameList,forScroll);
 
         inflater = this.getLayoutInflater();
@@ -74,9 +78,19 @@ public class MultiplayerActivity extends AppCompatActivity {
          //scroll = findViewById(R.id.list_added);
 
         listview.setAdapter(adapterBase);
-        //whatever.remove(ar);
 
-
+        findViewById(R.id.nav_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                back();
+            }
+        });
+        findViewById(R.id.nav_fwd).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                to_lobby((ArrayList<String>) forScroll);
+            }
+        });
 
     }
 
@@ -119,6 +133,17 @@ public class MultiplayerActivity extends AppCompatActivity {
         listview = findViewById(R.id.list);
         listview.setAdapter(adapterBase);
 
+    }
+
+    public void back(){
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
+    }
+
+    public void to_lobby(ArrayList<String> lista){
+        Intent intent = new Intent(this, LobbyActivity.class);
+        intent.putExtra("Selected List", lista);
+        startActivity(intent);
     }
 
 }

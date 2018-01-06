@@ -1,10 +1,12 @@
 package com.a000webhostapp.desocialize.desocialize;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,7 +50,7 @@ public class AdapterBase extends BaseAdapter {
         View view = View.inflate(mContext, R.layout.list_row,null);
         final TextView list_name = (TextView) view.findViewById(R.id.list_name);
         list_name.setText(listNames.get(position).toString());
-        Button btn = (Button) view.findViewById(R.id.list_add_btn);
+        ImageButton btn = (ImageButton) view.findViewById(R.id.list_add_btn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
