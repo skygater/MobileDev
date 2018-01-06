@@ -23,12 +23,16 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class SingleplayerActivity extends AppCompatActivity {
     Result lastResult = Result.LOSS;
     View resultOverlay;
+    View timeRemainingView;
     TextView resultTV;
+    TextView timeTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,8 @@ public class SingleplayerActivity extends AppCompatActivity {
         resultOverlay = findViewById(R.id.resultOverlay);
         resultTV = findViewById(R.id.resultTV);
         ImageButton imageButton = findViewById(R.id.replayBT);
+        timeTV = findViewById(R.id.timeRemainingTV);
+        timeRemainingView = findViewById(R.id.timeRemainingLayout);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,10 +69,10 @@ public class SingleplayerActivity extends AppCompatActivity {
      * Displays win screen when user wins
      */
     private void win(){
-        //Toast.makeText(this, "good", Toast.LENGTH_SHORT).show();
         if(lastResult.equals(Result.LOSS)){
             resultTV.setText(R.string.youWin);
             resultOverlay.setBackgroundColor(getResources().getColor(R.color.colorWin));
+            timeRemainingView.setVisibility(View.INVISIBLE);
         }
 
         lastResult = Result.WIN;
@@ -75,17 +81,30 @@ public class SingleplayerActivity extends AppCompatActivity {
 
     /**
      * Displays lose screen when user loses
+     * @param timeRemaining how much time was remaining for user to win
      */
-    private void loss(){
-        //Toast.makeText(this, "unlocked too early", Toast.LENGTH_SHORT).show();
+    private void loss(long timeRemaining){
         if(lastResult.equals(Result.WIN)){
             resultTV.setText(R.string.youLost);
             resultOverlay.setBackgroundColor(getResources().getColor(R.color.colorLoss));
+            timeRemainingView.setVisibility(View.VISIBLE);
         }
+
+        timeTV.setText(printTime(timeRemaining));
 
         lastResult = Result.LOSS;
         findViewById(R.id.resultOverlay).setVisibility(View.VISIBLE);
     }
+
+    /**
+     * Converts time in miliseconds into String
+     * @param time time in miliseconds
+     * @return String in form of Xm Ys
+     */
+    private String printTime(long time){
+        return (((time/60000 > 0)?((time/60000)+"m "):(""))+((time/1000)%60)+"s");
+    }
+
 
     /**
      * Makes win / lose screen invisible again when user clicks on "play again" button
@@ -105,8 +124,9 @@ public class SingleplayerActivity extends AppCompatActivity {
 
         @Override
         public void screenUnlocked() {
-            if(finalTime.after(Calendar.getInstance())){
-                loss();
+            long timeRemaining = finalTime.getTimeInMillis() - Calendar.getInstance().getTimeInMillis();
+            if(timeRemaining > 0){
+                loss(timeRemaining);
             }
             else{
                 win();
