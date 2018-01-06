@@ -20,7 +20,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".LobbyActivity"></activity>
+        <activity android:name=".LobbyActivity"
+            android:windowSoftInputMode="adjustNothing">
+
+        </activity>
     </application>
 
 </manifest>

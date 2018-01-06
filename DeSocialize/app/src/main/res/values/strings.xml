@@ -13,4 +13,7 @@
     <string name="game_type">Gamemode:</string>
     <string name="two_lives">Two Lives</string>
     <string name="first_unlock">First Unlock</string>
+    <string name="stake">What\'s at the stake?</string>
+    <string name="stake_2">Enter the stake...</string>
+    <string name="start_game">Start game</string>
 </resources>
