@@ -85,6 +85,15 @@ public class LobbyActivity extends AppCompatActivity {
     public void back(){
         Intent intent = new Intent(this, MultiplayerActivity.class);
         startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, MultiplayerActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void start_game(){

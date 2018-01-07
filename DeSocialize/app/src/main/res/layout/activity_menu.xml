@@ -50,6 +50,7 @@
             android:src="@drawable/user"
             android:layout_weight="1"
             android:padding="5dp"
+            android:onClick="profile"
             />
 
 

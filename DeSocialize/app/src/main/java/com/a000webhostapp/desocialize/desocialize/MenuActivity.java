@@ -49,4 +49,10 @@ public void multiplayer (View view ){
     finish();
 
 }
+
+    public void profile(View view){
+        Intent intent = new Intent(this, ProfileActivity.class);
+        //intent.putExtra("Profile ID", id);
+        startActivity(intent);
+    }
 }

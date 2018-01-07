@@ -29,7 +29,12 @@
         <activity android:name=".QrShow" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".MultiplayerActivity" />
-        <activity android:name=".LobbyActivity"></activity>
+        <activity
+            android:name=".LobbyActivity"
+            android:windowSoftInputMode="adjustNothing">
+            >
+        </activity>
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>
