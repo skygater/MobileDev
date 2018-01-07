@@ -51,18 +51,10 @@ public void multiplayer (View view ){
 
 }
 
-<<<<<<< HEAD
-    public void profile(View view){
-        Intent intent = new Intent(this, ProfileActivity.class);
-        //intent.putExtra("Profile ID", id);
-        startActivity(intent);
-    }
-=======
 public void profile (View view) {
-    Intent next = new Intent( MenuActivity.this, ContactsContract.Profile.class);
+    Intent next = new Intent( MenuActivity.this, ProfileActivity.class);
     startActivity(next);
     finish();
 }
 
->>>>>>> d7ab5f8259ec2f1d0dd602a77f9d8935dfa34cc8
 }
