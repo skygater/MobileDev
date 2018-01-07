@@ -124,11 +124,22 @@ public class MultiplayerActivity extends AppCompatActivity {
     public void back(){
         Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
+        finish();
+
     }
 
     public void to_lobby(ArrayList<String> lista){
         Intent intent = new Intent(this, LobbyActivity.class);
         intent.putExtra("Selected List", lista);
         startActivity(intent);
+        finish();
     }
 }
