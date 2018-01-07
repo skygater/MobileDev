@@ -1,10 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/djordjekalezic/Desktop/Mobile_App/MobileDev/DeSocialize/library/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-pt-rBR/values-pt-rBR.xml",
+            "outputFile": "C:\\Users\\djordjekalezic\\Desktop\\Mobile_App\\MobileDev\\DeSocialize\\library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-pt-rBR\\values-pt-rBR.xml",
             "map": [
                 {
-                    "source": "/Users/djordjekalezic/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.2.aar/21a36c1da1c91466210cf78dfe5c1a82/res/values-pt-rBR/values-pt-rBR.xml",
+                    "source": "C:\\Users\\djordjekalezic\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.0.2.aar\\21a36c1da1c91466210cf78dfe5c1a82\\res\\values-pt-rBR\\values-pt-rBR.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\Dario\\Desktop\\mobdev\\MobileDev\\DeSocialize\\library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-pt-rBR\\values-pt-rBR.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Dario\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.0.2.aar\\97eded8c22177d5e7e0f3a62ade7b03a\\res\\values-pt-rBR\\values-pt-rBR.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
