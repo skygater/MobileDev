@@ -34,7 +34,9 @@
             android:windowSoftInputMode="adjustNothing">
             >
         </activity>
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".FriendsActivity"></activity>
     </application>
 
 </manifest>

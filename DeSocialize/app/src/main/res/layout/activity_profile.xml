@@ -39,7 +39,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="@color/colorPrimary"
-             />
+            android:src="@mipmap/ic_account_settings_variant_white_24dp"
+            android:onClick="settings"/>
 
     </LinearLayout>
 
@@ -106,24 +107,19 @@
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/profile_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="35dp"
-                    android:layout_weight="0.7"
-                    android:text="daka.com"
-                    android:textAlignment="center"
-                    android:textSize="24sp" />
+
 
                 <TextView
                     android:id="@+id/profile_friends"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:layout_marginTop="35dp"
                     android:text="12 friends"
                     android:textAlignment="center"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"/>
 
 
                 <ImageView
