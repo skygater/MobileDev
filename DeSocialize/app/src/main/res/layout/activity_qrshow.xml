@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context="com.a000webhostapp.desocialize.desocialize.Main2Activity">
+    tools:context="com.a000webhostapp.desocialize.desocialize.QrShow">
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"

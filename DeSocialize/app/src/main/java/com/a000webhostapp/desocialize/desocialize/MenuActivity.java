@@ -32,11 +32,21 @@ public class MenuActivity extends AppCompatActivity {
     }
 
   public void showqr (View view){
-      Intent next  = new Intent(MenuActivity.this,Main2Activity.class);
+      Intent next  = new Intent(MenuActivity.this,QrShow.class);
       String qr = u.getQr();
       next.putExtra("qrid",qr);
       startActivity(next);
       finish();
 
   }
+
+public void multiplayer (View view ){
+    Intent next  = new Intent(MenuActivity.this,MultiplayerActivity.class);
+    String qr = u.getQr();
+    /// SEND ID OF THE PLAYER !! CHECK IF ONLINE
+
+    startActivity(next);
+    finish();
+
+}
 }

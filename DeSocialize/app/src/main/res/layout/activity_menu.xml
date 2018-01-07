@@ -89,6 +89,7 @@
                 android:layout_height="wrap_content"
                 android:text="Multi player"
                 android:backgroundTint="#fff"
+                android:onClick="multiplayer"
 
                 />
 

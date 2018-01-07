@@ -2,24 +2,18 @@ package com.a000webhostapp.desocialize.desocialize;
 
 import android.Manifest;
 import android.content.Intent;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Surface;
-import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.a000webhostapp.desocialize.desocialize.Premission.RPResultListener;
 import com.a000webhostapp.desocialize.desocialize.Premission.RuntimePermissionUtil;
-import com.google.android.gms.vision.text.Line;
 
 import github.nisrulz.qreader.QRDataListener;
 import github.nisrulz.qreader.QREader;
@@ -152,7 +146,7 @@ public class QrScanActivity extends AppCompatActivity {
     }
 
     public void approve (View view){
-        Intent next = new Intent(QrScanActivity.this, Main2Activity.class);
+        Intent next = new Intent(QrScanActivity.this, QrShow.class);
         next.putExtra("QR-ID", result);
          startActivity(next);
          finish();

@@ -26,8 +26,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".QrScanActivity" />
-        <activity android:name=".Main2Activity" />
-        <activity android:name=".MenuActivity"></activity>
+        <activity android:name=".QrShow" />
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".MultiplayerActivity" />
+        <activity android:name=".LobbyActivity"></activity>
     </application>
 
 </manifest>
