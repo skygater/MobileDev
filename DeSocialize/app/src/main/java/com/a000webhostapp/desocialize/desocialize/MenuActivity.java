@@ -1,6 +1,7 @@
 package com.a000webhostapp.desocialize.desocialize;
 
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -50,9 +51,18 @@ public void multiplayer (View view ){
 
 }
 
+<<<<<<< HEAD
     public void profile(View view){
         Intent intent = new Intent(this, ProfileActivity.class);
         //intent.putExtra("Profile ID", id);
         startActivity(intent);
     }
+=======
+public void profile (View view) {
+    Intent next = new Intent( MenuActivity.this, ContactsContract.Profile.class);
+    startActivity(next);
+    finish();
+}
+
+>>>>>>> d7ab5f8259ec2f1d0dd602a77f9d8935dfa34cc8
 }
