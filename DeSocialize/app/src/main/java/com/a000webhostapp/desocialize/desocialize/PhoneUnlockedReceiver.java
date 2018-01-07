@@ -5,6 +5,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.util.Log;
+import android.widget.Toast;
+
+import javax.xml.datatype.Duration;
 
 /**
  * This class starts screenUnlocked() method when user unlocks screen. This method must be override.
@@ -26,12 +30,8 @@ public abstract class PhoneUnlockedReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-
-        KeyguardManager keyguardManager = (KeyguardManager)context.getSystemService(Context.KEYGUARD_SERVICE);
         if(intent.getAction().equals(Intent.ACTION_USER_PRESENT)) {
-            if (!keyguardManager.isKeyguardSecure()) {
-                screenUnlocked();
-            }
+            screenUnlocked();
         }
         else if(intent.getAction().equals(Intent.ACTION_SCREEN_OFF)){
             screenLocked();
