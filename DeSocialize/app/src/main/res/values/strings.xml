@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">DeSocialize</string>
 
-    <color name="de_green">#92CA62</color>
-    <color name="de_white">#FFFFFF</color>
 
     <string-array name="de_glyph_strings">
         <item>M81.496,150.509c0,25.832-16.325,45.662-37.758,45.662H12.642v-91.324h31.095C65.17,104.848,81.496,124.678,81.496,150.509z M64.393,150.509c0-15.655-8.44-25.57-20.656-25.57H30.411v51.141h13.327C55.953,176.08,64.393,166.165,64.393,150.509z</item>

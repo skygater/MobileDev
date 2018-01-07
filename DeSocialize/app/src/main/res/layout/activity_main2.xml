@@ -1,62 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context="com.a000webhostapp.desocialize.desocialize.Main2Activity">
-
-    <LinearLayout
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_check_circle_black_24dp"
+        android:id="@+id/qr_img_show"
+        />
+    <TextView
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="0.5"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="0dp"
-                android:layout_marginRight="8dp"
-                />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="0dp"
-                android:layout_marginRight="8dp"
-                />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="0dp"
-                android:layout_marginRight="8dp"
-                />
-        </LinearLayout>
-
-    </LinearLayout>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin = "20dp"
-        android:id="@+id/button" />
+        android:text= "HELLO"
+        android:textSize="30sp"
+        android:id="@+id/testqrtext"
+        />
 
 
-
-
-</RelativeLayout>
+</LinearLayout>
