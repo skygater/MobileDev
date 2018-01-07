@@ -16,4 +16,5 @@
     <string name="stake">What\'s at the stake?</string>
     <string name="stake_2">Enter the stake...</string>
     <string name="start_game">Start game</string>
+    <string name="profile">Profile</string>
 </resources>

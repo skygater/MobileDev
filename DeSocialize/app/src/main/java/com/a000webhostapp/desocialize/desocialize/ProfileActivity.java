@@ -1,7 +1,9 @@
 package com.a000webhostapp.desocialize.desocialize;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -11,10 +13,18 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        userId = getIntent().getIntExtra("Profile ID",2 );
 
-        TextView test = findViewById(R.id.usrid);
-        test.setText(userId+"");
 
+        findViewById(R.id.nav_back_profile).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                back();
+            }
+        });
+    }
+
+    public void back(){
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
     }
 }
