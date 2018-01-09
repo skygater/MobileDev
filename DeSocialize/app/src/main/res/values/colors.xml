@@ -9,4 +9,7 @@
     <color name="de_white">#FFFFFF</color>
     <color name="de_grey">#e1e1e1</color>
 
+
+    <color name="colorLoss">#FF0000</color>
+    <color name="colorWin">#00FF00</color>
 </resources>

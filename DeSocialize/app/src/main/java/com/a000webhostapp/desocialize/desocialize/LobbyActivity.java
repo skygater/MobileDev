@@ -9,15 +9,14 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.a000webhostapp.desocialize.desocialize.adapters.LobbyAdapter;
+import com.a000webhostapp.desocialize.desocialize.java.FriendsOnline;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LobbyActivity extends AppCompatActivity {
     ListView listview;
-    List<String> list;
-    ArrayList<Integer> pointList = new ArrayList<Integer>();
-    Integer[] imageIDArray = new Integer[2];
+    List<FriendsOnline> list;
 
     LayoutInflater inflater;
     List<String> forScroll;
@@ -27,18 +26,14 @@ public class LobbyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lobby);
-        list = getIntent().getStringArrayListExtra("Selected List");
+        list = new ArrayList<>();
+        list = (List<FriendsOnline>) getIntent().getSerializableExtra("selectedList");
         forScroll = new ArrayList<>();
 
         inflater = this.getLayoutInflater();
         listview = findViewById(R.id.lobby_list);
         lobbyAdapter = new LobbyAdapter(this,list);
         listview.setAdapter(lobbyAdapter);
-
-        /*String[] stringArray = list.toArray(new String[0]);
-        TextView x = findViewById(R.id.nav_text_lobby);
-        x.setText(stringArray[0]);*/
-
 
         findViewById(R.id.nav_back_lobby).setOnClickListener(new View.OnClickListener() {
             @Override

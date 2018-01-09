@@ -5,11 +5,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.a000webhostapp.desocialize.desocialize.MultiplayerActivity;
 import com.a000webhostapp.desocialize.desocialize.R;
+import com.a000webhostapp.desocialize.desocialize.java.FriendsOnline;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -19,10 +22,10 @@ import java.util.List;
 
 public class AdapterBase  extends BaseAdapter {
     Context mContext;
-    List<String> listNames;
-    List <String> listScroll;
+    List<FriendsOnline> listNames;
+    List <FriendsOnline> listScroll;
 
-    public AdapterBase (Context mContext, List<String> listNames, List<String> listScroll){
+    public AdapterBase (Context mContext, List<FriendsOnline> listNames, List<FriendsOnline> listScroll){
         this.mContext = mContext;
         this.listNames = listNames;
         this.listScroll = listScroll;
@@ -50,13 +53,22 @@ public class AdapterBase  extends BaseAdapter {
 
         View view = View.inflate(mContext, R.layout.item_addmulti,null);
         final TextView list_name = (TextView) view.findViewById(R.id.list_name);
-        list_name.setText(listNames.get(position).toString());
+        TextView list_points = (TextView) view.findViewById(R.id.list_points);
+        ImageView list_avatar =(ImageView) view.findViewById(R.id.list_avatar);
+
+        list_name.setText(listNames.get(position).getUsername());
+        list_points.setText(listNames.get(position).getPoints()+"pt");
+
+        if(!listNames.get(position).getImgp().equalsIgnoreCase("//")) {
+            Picasso.with(mContext).load(listNames.get(position).getImgp()).into(list_avatar);
+        }
+
         ImageButton btn = (ImageButton) view.findViewById(R.id.list_add_btn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(mContext,  position+"", Toast.LENGTH_SHORT).show();
-                listScroll.add(listNames.get(position).toString());
+                listScroll.add(listNames.get(position));
                 if(mContext instanceof MultiplayerActivity){
                     ((MultiplayerActivity)mContext).adder_logic(listScroll);
                     listNames.remove(position);
@@ -67,7 +79,7 @@ public class AdapterBase  extends BaseAdapter {
 
 
 
-        view.setTag(position);
+        view.setTag(listNames.get(position).getIdpy());
         return view;
 
     }

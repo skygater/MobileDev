@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="min_duration">1</integer>
+    <integer name="max_duration">150</integer>
+    <integer name="def_duration">10</integer>
+</resources>
