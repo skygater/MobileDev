@@ -243,6 +243,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+
     /* User register info */
     public void addUser (View view){
         //add values to username, email, pass1;
