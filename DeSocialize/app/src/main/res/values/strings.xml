@@ -2,10 +2,10 @@
     <string name="app_name">DeSocialize</string>
     <string name="error">Error</string>
 
-    <string name="singlePlayer">SinglePlayer</string>
+    <string name="singlePlayer">Singleplayer</string>
     <string name="multiPlayer">MultiPlayer</string>
     <string name="title_activity_single_player">SinglePlayerActivity</string>
-    <string name="SPinfo">Can you not use the phone for several minutes? Find out!</string>
+    <string name="SPinfo">Please select the game duration:</string>
     <string name="minutesLabel">Minutes:</string>
     <string name="howToStart">Turn off screen to start</string>
     <string name="timeRemaining">Time remaining: </string>

@@ -63,8 +63,19 @@ public class SingleplayerActivity extends AppCompatActivity {
                 playAgain();
             }
         });
+
+        findViewById(R.id.nav_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                back();
+            }
+        });
     }
 
+    void back(){
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
+    }
     /**
      * Displays win screen when user wins
      */
