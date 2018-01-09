@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context="com.a000webhostapp.desocialize.desocialize.MenuActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimary"
+            android:paddingLeft="4dp"
+            >
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:backgroundTint="@color/colorPrimaryMenu"
+                android:src="@drawable/qrcode"
+                android:onClick="showqr"
+
+                />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:text="20000"
+                android:textSize="20sp"
+                android:gravity="center|right"
+                android:textStyle="bold"
+                android:textColor="#fff"
+
+                />
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/user"
+                android:layout_weight="0.5"
+                android:padding="5dp"
+                android:onClick="profile"
+                />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="top"
+
+            >
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.4"
+                />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.6"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.2">
+                </View>
+                <ImageView
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/logo"
+                    android:gravity="top" />
+                <View
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.2">>
+
+                </View>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="vertical"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.4"
+                    android:gravity="center"
+                    android:layout_marginTop="75dp"
+                    android:orientation="vertical"
+                    >
+
+                    <Button
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent"
+                        android:onClick="multiplayer"
+                        android:text="Multi player"
+                        android:textSize="20dp"
+                        android:textAllCaps="false"
+                        android:backgroundTint="#92CA62"
+                        android:textColor="@color/de_white"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.4"
+                    android:gravity="center">
+
+                    <Button
+                        android:onClick="singleplayer"
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="#92CA62"
+                        android:text="Single player"
+                        android:textSize="20dp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/de_white"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.4"
+                    android:gravity="center">
+
+                    <Button
+
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="#92CA62"
+                        android:text="Settings"
+                        android:textSize="20dp"
+                        android:textAllCaps="false"
+
+                        android:textColor="@color/de_white"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.5"
+                android:gravity="center|bottom"
+                >
+
+                <Button
+                    android:layout_width="175dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#a53838"
+                    android:layout_marginBottom="15dp"
+                    android:text="log out"
+                    android:textSize="18dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/de_white" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

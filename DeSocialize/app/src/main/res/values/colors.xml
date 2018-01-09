@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#9632ec</color>
+    <color name="colorPrimaryDark">#7828bc</color>
+    <color name="colorPrimaryMenu">#6c28bc</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="de_green">#92CA62</color>
+    <color name="de_white">#FFFFFF</color>
+    <color name="de_grey">#e1e1e1</color>
+
+
+    <color name="colorLoss">#FF0000</color>
+    <color name="colorWin">#00FF00</color>
+</resources>

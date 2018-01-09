@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context="com.a000webhostapp.desocialize.desocialize.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/layouth1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+        <com.jaredrummler.android.widget.AnimatedSvgView
+            android:id="@+id/animated_svg_view"
+            android:layout_width="300dp"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:layout_marginBottom="25dp"
+            app:animatedSvgFillColors="@array/de_glyph_colors"
+            app:animatedSvgFillStart="1200"
+            app:animatedSvgFillTime="1000"
+            app:animatedSvgGlyphStrings="@array/de_glyph_strings"
+            app:animatedSvgImageSizeX="620"
+            app:animatedSvgImageSizeY="400"
+            app:animatedSvgTraceMarkerLength="50"
+            app:animatedSvgTraceTime="2000"
+            app:animatedSvgTraceTimePerGlyph="1000"/>
+            <!--Login -->
+            <LinearLayout
+                android:id="@+id/layoutlogin"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:orientation="vertical"
+                android:gravity="center|top"
+                android:visibility="gone"
+                >
+                <EditText
+                    android:id="@+id/login_username"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Username or Email"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:theme="@style/login"
+                    android:textColor="#FFF"
+                    android:textColorHint="#a7a7a7"
+                    />
+                <EditText
+                    android:id="@+id/login_pass"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:gravity="center"
+                    android:inputType="textPassword"
+                    android:theme="@style/login"
+                    android:textColor="#FFF"
+                    android:textColorHint="#a7a7a7"
+
+                    />
+                <Button
+                    android:onClick="login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Login"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/de_green"
+                    android:textColor="#FFF"
+                    android:visibility="visible"
+                    android:id="@+id/btn_login"
+                    />
+                <LinearLayout
+                    android:id="@+id/log_reg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center|top"
+                    android:visibility="gone"
+                    >
+                    <Button
+                        android:onClick="login_reg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Login"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="@color/de_green"
+                        android:textColor="#FFF"
+                        />
+                    <ProgressBar
+                        android:layout_marginTop="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:id="@+id/progressBar2"
+                        android:visibility="gone"
+
+                        />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Add info for registration -->
+            <LinearLayout
+                android:id="@+id/layoutaddinfo"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:orientation="vertical"
+                android:gravity="center|top"
+                android:visibility="gone"
+                >
+                <EditText
+                    android:id="@+id/add_username"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Add Username"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:theme="@style/login"
+                    android:textColor="#FFF"
+                    android:textColorHint="#a7a7a7"
+
+                    />
+                <EditText
+                    android:id="@+id/add_email"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Add Email"
+                    android:gravity="center"
+                    android:inputType="textEmailAddress"
+                    android:theme="@style/login"
+                    android:textColor="#FFF"
+                    android:textColorHint="#a7a7a7"
+                    />
+                <EditText
+                    android:id="@+id/add_pass1"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Add password"
+                    android:gravity="center"
+                    android:inputType="textPassword"
+                    android:theme="@style/login"
+                    android:textColor="#FFF"
+                    android:textColorHint="#a7a7a7"
+
+                    />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    >
+
+                <Button
+                    android:id="@+id/joinbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Join"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="#f1c40f"
+                    android:textColor="#FFF"
+                    android:onClick="addUser"
+                    />
+                <ProgressBar
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:id="@+id/progressBar1"
+                    android:visibility="gone"
+                    android:layout_toRightOf="@id/joinbtn"
+
+
+                    />
+
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Log in"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/de_green"
+                    android:textColor="#FFF"
+                    android:onClick="backLogin"
+                    />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        <!--Registration !-->
+        <LinearLayout
+            android:id="@+id/layoutregister"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center|top"
+            android:visibility="gone"
+            >
+            <Button
+                android:id="@+id/btnreg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Join the party!"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#f1c40f"
+                android:textColor="#FFF"
+                android:onClick="register"
+
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
