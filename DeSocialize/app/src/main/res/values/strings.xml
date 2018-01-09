@@ -18,6 +18,12 @@
     <string name="stake_2">Enter the stake...</string>
     <string name="start_game">Start game</string>
     <string name="profile">Profile</string>
+    <string name="shop">Shop</string>
+    <string name="shop_avatars">Shop Avatars</string>
+    <string name="shop_bonuses">Shop Bonuses</string>
+    <string name="choose_avatar">Pick your Avatar</string>
+    <string name="dunno">Dunno.</string>
+    <string name="cancel_stake">Negate a stake</string>
 
 
     <string name="SPinfo">Please select the game duration:</string>
@@ -29,7 +35,6 @@
     <string name="tryAgain">Play again?</string>
 
     <string name="error">Error</string>
-
 
 
     <string-array name="de_glyph_strings">

@@ -63,6 +63,13 @@ public class MenuActivity extends AppCompatActivity {
         Toast.makeText(this, "Job canceled ", Toast.LENGTH_SHORT).show();
     }
 
+    public void shop (View view){
+        //jobScheduler.cancel(JOB_ID);
+        Intent intent = new Intent(this, ShopActivity.class);
+        startActivity(intent);
+        //Toast.makeText(this, "Job canceled ", Toast.LENGTH_SHORT).show();
+    }
+
   public void showqr (View view){
       Intent next  = new Intent(MenuActivity.this,QrShow.class);
       String qr = u.getQr();
@@ -83,19 +90,12 @@ public void multiplayer (View view ){
 
 }
 
-<<<<<<< HEAD
 public void profile (View view) {
     Intent next = new Intent( MenuActivity.this, ProfileActivity.class);
     startActivity(next);
     finish();
 }
 
-=======
-    public void profile(View view){
-        Intent intent = new Intent(this, ProfileActivity.class);
-        //intent.putExtra("Profile ID", id);
-        startActivity(intent);
-    }
 
     /*@Override
     public void onBackPressed() {
@@ -104,5 +104,4 @@ public void profile (View view) {
         onlineStatus.execute(u.getIdu(), 0);
 
     }*/
->>>>>>> djapp
 }

@@ -149,11 +149,11 @@
                     android:gravity="center">
 
                     <Button
-
+                        android:onClick="shop"
                         android:layout_width="200dp"
                         android:layout_height="match_parent"
                         android:backgroundTint="#92CA62"
-                        android:text="Settings"
+                        android:text="@string/shop"
                         android:textSize="20dp"
                         android:textAllCaps="false"
 
