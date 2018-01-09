@@ -5,9 +5,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.a000webhostapp.desocialize.desocialize.R;
+import com.a000webhostapp.desocialize.desocialize.java.FriendsOnline;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -17,9 +20,9 @@ import java.util.List;
 
 public class LobbyAdapter extends BaseAdapter {
     Context mContext;
-    List<String> listNames;
+    List<FriendsOnline> listNames;
 
-    public LobbyAdapter (Context mContext, List<String> listNames){
+    public LobbyAdapter (Context mContext, List<FriendsOnline> listNames){
         this.mContext = mContext;
         this.listNames = listNames;
     }
@@ -45,8 +48,15 @@ public class LobbyAdapter extends BaseAdapter {
 
         View view = View.inflate(mContext, R.layout.item_lobbyfriends,null);
         final TextView list_name = (TextView) view.findViewById(R.id.lobby_list_name);
-        list_name.setText(listNames.get(position).toString());
-        ImageButton btn = (ImageButton) view.findViewById(R.id.lobby_list_add_btn);
+
+        TextView list_points = (TextView) view.findViewById(R.id.lobby_list_points);
+        ImageView list_avatar =(ImageView) view.findViewById(R.id.lobby_list_avatar);
+        list_name.setText(listNames.get(position).getUsername());
+        list_points.setText(listNames.get(position).getPoints()+"pt");
+
+        if(!listNames.get(position).getImgp().equalsIgnoreCase("//")) {
+            Picasso.with(mContext).load(listNames.get(position).getImgp()).into(list_avatar);
+        }
         view.setTag(position);
         return view;
 
