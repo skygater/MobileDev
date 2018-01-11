@@ -1,6 +1,10 @@
 package com.a000webhostapp.desocialize.desocialize.Task;
 
+import android.content.Context;
 import android.os.AsyncTask;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -15,18 +19,24 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 /**
- * Created by djordjekalezic on 09/01/2018.
+ * Created by djordjekalezic on 10/01/2018.
  */
 
-public class PendingExecute extends AsyncTask<Integer,Void,String> {
+public class Profilupdate extends AsyncTask<Integer, Void, String> {
 
-    String json_url ="https://desocialize.000webhostapp.com/approve.php";
-    public String JSON_String = "";
+    public Context ctx;
+    public String JSON_String;
+    JSONObject jsonObject;
+    JSONArray jsonArray;
+    String json_url = "https://desocialize.000webhostapp.com/profileupdate.php";
+
+    public Profilupdate(Context ctx) {
+        this.ctx = ctx;
+    }
 
 
     @Override
     protected String doInBackground(Integer... values) {
-          /* Background Task for geting a JSON file */
         StringBuilder stringBuilder = new StringBuilder();
         int user = values[0];
 
@@ -37,8 +47,8 @@ public class PendingExecute extends AsyncTask<Integer,Void,String> {
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setDoOutput(true);
             OutputStream outputStream = httpURLConnection.getOutputStream();
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
-            String  data = URLEncoder.encode("user","UTF-8") + "=" + URLEncoder.encode(user+"","UTF-8");
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+            String data = URLEncoder.encode("user", "UTF-8") + "=" + URLEncoder.encode(user + "", "UTF-8");
             bufferedWriter.write(data);
 
             bufferedWriter.flush();
@@ -49,7 +59,7 @@ public class PendingExecute extends AsyncTask<Integer,Void,String> {
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
-            while ((JSON_String = bufferedReader.readLine()) != null){
+            while ((JSON_String = bufferedReader.readLine()) != null) {
                 stringBuilder.append(JSON_String);
             }
             bufferedReader.close();
@@ -65,3 +75,4 @@ public class PendingExecute extends AsyncTask<Integer,Void,String> {
         return stringBuilder.toString().trim();
     }
 }
+

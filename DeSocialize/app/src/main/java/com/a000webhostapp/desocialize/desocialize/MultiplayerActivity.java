@@ -111,16 +111,21 @@ public class MultiplayerActivity extends AppCompatActivity {
                 checking.setVisibility(View.GONE);
                 mProgressBar.setVisibility(View.GONE);
                 //Toast.makeText(MultiplayerActivity.this, "HELLO??", Toast.LENGTH_SHORT).show();
-               // Toast.makeText(MultiplayerActivity.this, friendsOnline.size()+"", Toast.LENGTH_SHORT).show();
-                if (friendsOnline.size() != 0) {
-                    //Toast.makeText(MultiplayerActivity.this, friendsOnline.get(0).getUsername(), Toast.LENGTH_SHORT).show();
-                    //New Adapter;
-                   inflateUsers();
-                    //listview.setAdapter(adapterBase);
-                }else{
-                    checking.setVisibility(View.VISIBLE);
-                    checking.setText("No players Online");
-                    Toast.makeText(MultiplayerActivity.this, "No players Online ", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(MultiplayerActivity.this, friendsOnline.size()+"", Toast.LENGTH_SHORT).show();
+                if (friendsOnline == null){
+                    Toast.makeText(MultiplayerActivity.this, "Internal error try again!", Toast.LENGTH_SHORT).show();
+                }else {
+                    if (friendsOnline.size() != 0) {
+                        //Toast.makeText(MultiplayerActivity.this, friendsOnline.get(0).getUsername(), Toast.LENGTH_SHORT).show();
+                        //New Adapter;
+                        inflateUsers();
+                        //listview.setAdapter(adapterBase);
+                    } else {
+                        checking.setVisibility(View.VISIBLE);
+                        checking.setText("No players Online");
+                        Toast.makeText(MultiplayerActivity.this, "No players Online ", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
 
 
@@ -141,6 +146,82 @@ public class MultiplayerActivity extends AppCompatActivity {
                 to_lobby(forScroll);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        OnlineFriends onlineFriends = new OnlineFriends(this){
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                JSON_String = s;
+                friendsOnline = new ArrayList<>();
+                FriendsOnline friends= null;
+                try {
+                    jsonObject = new JSONObject(JSON_String);
+                    jsonArray = jsonObject.getJSONArray("server_responce");
+                    int count = 0;
+                    String imgp, username;
+                    int idp,points;
+                    while(count < jsonArray.length()){
+                        JSONObject jo = jsonArray.getJSONObject(count);
+                        idp = jo.getInt("idpy");
+                        imgp = jo.getString("imgp");
+                        username = jo.getString("username");
+                        points = jo.getInt("points");
+                        friends = new FriendsOnline(idp,username,imgp,points);
+                        friendsOnline.add(friends);
+                        count ++;
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+
+        onlineFriends.execute(u.getIdu());
+
+        CountDownTimer mCountDownTimer;
+        final int[] i = {0};
+        mProgressBar.setProgress(i[0]);
+        mProgressBar.setVisibility(View.VISIBLE);
+        mCountDownTimer=new CountDownTimer(6000,5000) {
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                Log.v("Log_tag", "Tick of Progress"+ i[0] + millisUntilFinished);
+                i[0]++;
+                mProgressBar.setProgress(i[0]);
+            }
+            @Override
+            public void onFinish() {
+
+                checking.setVisibility(View.GONE);
+                mProgressBar.setVisibility(View.GONE);
+                //Toast.makeText(MultiplayerActivity.this, "HELLO??", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(MultiplayerActivity.this, friendsOnline.size()+"", Toast.LENGTH_SHORT).show();
+                if (friendsOnline == null){
+                    Toast.makeText(MultiplayerActivity.this, "Internal error try again!", Toast.LENGTH_SHORT).show();
+                }else {
+                    if (friendsOnline.size() != 0) {
+                        //Toast.makeText(MultiplayerActivity.this, friendsOnline.get(0).getUsername(), Toast.LENGTH_SHORT).show();
+                        //New Adapter;
+                        inflateUsers();
+                        //listview.setAdapter(adapterBase);
+                    } else {
+                        checking.setVisibility(View.VISIBLE);
+                        checking.setText("No players Online");
+                        Toast.makeText(MultiplayerActivity.this, "No players Online ", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+
+            }
+        };
+        mCountDownTimer.start();
     }
 
     public void inflateUsers (){
@@ -196,6 +277,7 @@ public class MultiplayerActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
 
     @Override
     public void onBackPressed() {

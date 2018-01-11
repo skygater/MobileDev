@@ -34,20 +34,12 @@ public class OnlineFriends extends AsyncTask<Integer, Void, String> {
     public String JSON_String;
     JSONObject jsonObject;
     JSONArray jsonArray;
-    List<FriendsOnline> friendsOnline;
     String json_url ="https://desocialize.000webhostapp.com/getfriends.php";
 
     public OnlineFriends( Context ctx){
         this.ctx = ctx;
     }
 
-    public List<FriendsOnline> getFriendsOnline() {
-        return friendsOnline;
-    }
-
-    public void setFriendsOnline(List<FriendsOnline> friendsOnline) {
-        this.friendsOnline = friendsOnline;
-    }
 
     @Override
     protected String doInBackground(Integer... values) {

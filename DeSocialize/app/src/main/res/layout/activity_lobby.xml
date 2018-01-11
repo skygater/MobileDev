@@ -120,11 +120,12 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/colorPrimary"
-                    android:text="@string/two_lives"
+                    android:text= "2lives comming soon"
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
-                    android:textSize="20sp"
+                   android:clickable="false"
+                    android:enabled="false"
 
                     />
 
@@ -162,20 +163,25 @@
                 android:layout_weight="1.25"
                 android:layout_marginTop="5dp"
                 android:gravity="right">
-
+                <ProgressBar
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/progressBar4"
+                    />
                 <Button
                     android:id="@+id/lobby_start"
                     android:backgroundTint="#e1e1e1"
                     android:layout_width="wrap_content"
-                    android:enabled="false"
-                    android:clickable="false"
                     android:layout_height="match_parent"
                     android:layout_marginRight="10dp"
                     android:text="@string/start_game"
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textSize="24sp"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:onClick="start_game"
+                    />
+
 
             </LinearLayout>
 

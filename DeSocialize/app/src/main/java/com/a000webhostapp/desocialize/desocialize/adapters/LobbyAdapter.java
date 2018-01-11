@@ -1,6 +1,7 @@
 package com.a000webhostapp.desocialize.desocialize.adapters;
 
 import android.content.Context;
+import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -48,11 +49,15 @@ public class LobbyAdapter extends BaseAdapter {
 
         View view = View.inflate(mContext, R.layout.item_lobbyfriends,null);
         final TextView list_name = (TextView) view.findViewById(R.id.lobby_list_name);
+        FloatingActionButton lobby_list_add_btn = (FloatingActionButton) view.findViewById(R.id.lobby_list_add_btn);
 
         TextView list_points = (TextView) view.findViewById(R.id.lobby_list_points);
         ImageView list_avatar =(ImageView) view.findViewById(R.id.lobby_list_avatar);
         list_name.setText(listNames.get(position).getUsername());
         list_points.setText(listNames.get(position).getPoints()+"pt");
+        if (listNames.get(position).getAccept() == 1){
+            lobby_list_add_btn.setImageResource(R.drawable.ic_check_black_24dp);
+        }
 
         if(!listNames.get(position).getImgp().equalsIgnoreCase("//")) {
             Picasso.with(mContext).load(listNames.get(position).getImgp()).into(list_avatar);

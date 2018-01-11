@@ -1,6 +1,10 @@
 package com.a000webhostapp.desocialize.desocialize.Task;
 
+import android.content.Context;
 import android.os.AsyncTask;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -15,21 +19,26 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 /**
- * Created by djordjekalezic on 09/01/2018.
+ * Created by djordjekalezic on 10/01/2018.
  */
 
-public class PendingExecute extends AsyncTask<Integer,Void,String> {
+public class SendUnlocked extends AsyncTask<Integer, Void, String> {
 
-    String json_url ="https://desocialize.000webhostapp.com/approve.php";
-    public String JSON_String = "";
+    public Context ctx;
+    public String JSON_String;
+    JSONObject jsonObject;
+    JSONArray jsonArray;
+    String json_url ="https://desocialize.000webhostapp.com/sendunlocked.php";
+
+    public SendUnlocked(Context ctx){
+        this.ctx = ctx;
+    }
 
 
     @Override
     protected String doInBackground(Integer... values) {
-          /* Background Task for geting a JSON file */
         StringBuilder stringBuilder = new StringBuilder();
         int user = values[0];
-
         try {
 
             URL url = new URL(json_url);
@@ -64,4 +73,7 @@ public class PendingExecute extends AsyncTask<Integer,Void,String> {
 
         return stringBuilder.toString().trim();
     }
+
+
+
 }

@@ -35,13 +35,38 @@
             android:name=".LobbyActivity"
             android:windowSoftInputMode="adjustNothing">
             >
+            <intent-filter>
+                <action android:name="com.a000webhostapp.desocialize.desocialize.checkStatus" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.a000webhostapp.desocialize.desocialize.checkDeclaind" />
+            </intent-filter>
         </activity>
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".SingleplayerActivity"></activity>
-        <service android:name=".service.NotificationJobScheduler"
-            android:permission="android.permission.BIND_JOB_SERVICE"
+        <activity android:name=".SingleplayerActivity" />
+
+        <service
+            android:name=".service.NotificationJobScheduler"
             android:exported="true"
-            ></service>
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name=".service.PendingJobScheduler"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name=".service.GameService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <activity android:name=".GameRoomActivity">
+            <intent-filter>
+                <action android:name="com.a000webhostapp.desocialize.desocialize.gamestart" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.a000webhostapp.desocialize.desocialize.unlockcheck" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ShopActivity"></activity>
     </application>
 
 </manifest>

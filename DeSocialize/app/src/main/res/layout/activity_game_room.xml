@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.a000webhostapp.desocialize.desocialize.GameRoomActivity"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    >
+
+    <ImageButton
+        android:id="@+id/nav_back1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="helpme"
+        android:backgroundTint="@color/colorPrimary"
+        app:srcCompat="@mipmap/ic_arrow_left_white_24dp" />
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressbar33"
+        android:visibility="gone"
+        />
+    <TextView
+        android:id="@+id/textstart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:visibility="visible"
+        android:text="Waiting to start a game ... "
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#ffff"
+        android:textSize="20sp"
+        />
+
+    <include layout="@layout/result_screen"
+
+        android:visibility="visible"/>
+
+</LinearLayout>

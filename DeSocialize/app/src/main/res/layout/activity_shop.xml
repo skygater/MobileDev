@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.a000webhostapp.desocialize.desocialize.ShopActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorPrimary">
+
+
+        <ImageButton
+            android:id="@+id/nav_back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="back"
+            android:backgroundTint="@color/colorPrimary"
+            app:srcCompat="@mipmap/ic_arrow_left_white_24dp" />
+
+        <TextView
+            android:id="@+id/nav_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="@string/shop"
+            android:textAlignment="center"
+            android:textColor="@android:color/background_light"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/nav_points"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:layout_marginRight="5dp"
+            android:textStyle="bold"
+            android:textColor="@color/de_white"
+            android:gravity="center"
+            android:drawableLeft="@drawable/common_google_signin_btn_icon_dark"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="3200" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/shop_selector"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:gravity="center"
+            android:background="#e1e1e1"
+            android:text="@string/choose_avatar"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <HorizontalScrollView
+            android:id="@+id/lista"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.7">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <GridView
+                    android:id="@+id/gridScroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:horizontalSpacing="10dp"
+                    android:numColumns="3"
+                    android:scrollbars="horizontal"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/shop_avatars"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:gravity="center"
+            android:text="@string/shop_avatars"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:background="#e1e1e1"/>
+
+        <GridView
+            android:id="@+id/avatargrid"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:numColumns="3">
+
+        </GridView>
+
+
+        <TextView
+            android:id="@+id/shop_bonuses"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:gravity="center"
+            android:text="@string/shop_bonuses"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:background="#e1e1e1"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5">
+
+            <Button
+                android:id="@+id/shop_remove_stake"
+                android:backgroundTint="@color/colorPrimary"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:text="@string/cancel_stake"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                />
+            <Button
+                android:id="@+id/shop_dunno"
+                android:backgroundTint="@color/colorPrimary"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:text="@string/dunno"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
+

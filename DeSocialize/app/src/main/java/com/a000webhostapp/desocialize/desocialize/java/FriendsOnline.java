@@ -15,12 +15,22 @@ public class FriendsOnline implements Serializable {
      public String username;
      public String imgp;
      public int points;
+     public int accept;
 
     public FriendsOnline(int idpy, String username,String imgp, int points) {
         this.idpy = idpy;
         this.imgp = imgp;
         this.points = points;
         this.username = username;
+        this.accept = 0;
+    }
+
+    public int getAccept() {
+        return accept;
+    }
+
+    public void setAccept(int accept) {
+        this.accept = accept;
     }
 
     public String getUsername() {

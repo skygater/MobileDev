@@ -1,5 +1,6 @@
 package com.a000webhostapp.desocialize.desocialize.Task;
 
+import android.content.Context;
 import android.os.AsyncTask;
 
 import java.io.BufferedReader;
@@ -15,12 +16,12 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 /**
- * Created by djordjekalezic on 09/01/2018.
+ * Created by djordjekalezic on 10/01/2018.
  */
 
-public class PendingExecute extends AsyncTask<Integer,Void,String> {
+public class DeclineCall extends AsyncTask<Integer,Void,String> {
 
-    String json_url ="https://desocialize.000webhostapp.com/approve.php";
+    String json_url ="https://desocialize.000webhostapp.com/checkdecline.php";
     public String JSON_String = "";
 
 

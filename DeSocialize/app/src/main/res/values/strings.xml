@@ -30,7 +30,12 @@
 
     <string name="error">Error</string>
 
-
+    <string name="shop">Shop</string>
+    <string name="shop_avatars">Shop Avatars</string>
+    <string name="shop_bonuses">Shop Bonuses</string>
+    <string name="choose_avatar">Pick your Avatar</string>
+    <string name="dunno">Dunno.</string>
+    <string name="cancel_stake">Negate a stake</string>
 
     <string-array name="de_glyph_strings">
         <item>M81.496,150.509c0,25.832-16.325,45.662-37.758,45.662H12.642v-91.324h31.095C65.17,104.848,81.496,124.678,81.496,150.509z M64.393,150.509c0-15.655-8.44-25.57-20.656-25.57H30.411v51.141h13.327C55.953,176.08,64.393,166.165,64.393,150.509z</item>

@@ -55,7 +55,7 @@
                 android:tint="#c2642e"
                 app:backgroundTint="#FFFFFF"
                 app:rippleColor="#FFFFFF"
-                app:srcCompat="@mipmap/ic_timer_sand_grey600_24dp" />
+                android:src="@mipmap/ic_timer_sand_grey600_24dp" />
         </LinearLayout>
 
     </LinearLayout>
